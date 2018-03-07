@@ -113,6 +113,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Database\dbQuanLyDoi.rar" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CAN_BO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.GIAY_DI_DUONG.datasource" />
