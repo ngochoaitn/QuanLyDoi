@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.giayDiDuongBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.giayDiDuongBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,14 +42,24 @@
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.giayDiDuongBarButtonItem});
+            this.giayDiDuongBarButtonItem,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 3;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl1.Size = new System.Drawing.Size(758, 143);
+            // 
+            // giayDiDuongBarButtonItem
+            // 
+            this.giayDiDuongBarButtonItem.Caption = "Giấy đi đường";
+            this.giayDiDuongBarButtonItem.Id = 1;
+            this.giayDiDuongBarButtonItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("giayDiDuongBarButtonItem.ImageOptions.Image")));
+            this.giayDiDuongBarButtonItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("giayDiDuongBarButtonItem.ImageOptions.LargeImage")));
+            this.giayDiDuongBarButtonItem.Name = "giayDiDuongBarButtonItem";
+            this.giayDiDuongBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.giayDiDuongBarButtonItem_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -60,17 +71,16 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.giayDiDuongBarButtonItem);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // giayDiDuongBarButtonItem
+            // barButtonItem1
             // 
-            this.giayDiDuongBarButtonItem.Caption = "Giấy đi đường";
-            this.giayDiDuongBarButtonItem.Id = 1;
-            this.giayDiDuongBarButtonItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.giayDiDuongBarButtonItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.giayDiDuongBarButtonItem.Name = "giayDiDuongBarButtonItem";
-            this.giayDiDuongBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.giayDiDuongBarButtonItem_ItemClick);
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 2;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // frmMain
             // 
@@ -94,6 +104,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem giayDiDuongBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 

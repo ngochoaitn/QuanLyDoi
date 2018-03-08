@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using QuanLyDoi.Database;
 using System.Data.Entity;
+using QuanLyDoi.Support;
+using Aspose.Words;
+using System.Diagnostics;
+using Aspose.Words.Tables;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
@@ -34,6 +38,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         private async void frmChonXa_Load(object sender, EventArgs e)
         {
             await HienThiGiaoDien();
+           TaoBoSo();
         }
 
         private void bgrvChonXa_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -78,6 +83,173 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             }
 
             cANBOBindingSource.DataSource = _db.CAN_BO.Local;
+        }
+
+        List<GIAY_DI_DUONG> _danhSachGiayDiDuong;
+        private void btnXuatGiay_Click(object sender, EventArgs e)
+        {
+            TaoDanhSachGiayMoi();
+            XuatGiay();
+        }
+
+        private void TaoDanhSachGiayMoi()
+        {
+            _danhSachGiayDiDuong = new List<GIAY_DI_DUONG>();
+            foreach (ChonDiaBanXa chon in chonDiaBanXaBindingSource)
+            {
+                var boSo = LayMotBoSoNgauNhien();//Sử dụng cho đồng chí này
+
+                int viTriSo = 0;
+                while (boSo[viTriSo] == 0)
+                    viTriSo++;//Tìm đến tuần cần lấy ngày
+
+                foreach (int id_xa in chon.THU_TU_CHON_XA)
+                {
+                    GIAY_DI_DUONG giayMoi = new GIAY_DI_DUONG();
+                    //giayMoi.ID = SequenceId.GIAY_DI_DUONG().Result;
+                    giayMoi.ID_CAN_BO = chon.ID_CAN_BO;
+                    giayMoi.ID_DIA_BAN_XA = id_xa;
+                    giayMoi.NAM = _nam;
+                    giayMoi.THANG = _thang;
+
+                    Tuple<int, int> ngayDiVe = LayNgay(viTriSo++, boSo);
+                    giayMoi.NGAY_DI = new DateTime(_nam, _thang, ngayDiVe.Item1);
+                    giayMoi.NGAY_VE = new DateTime(_nam, _thang, ngayDiVe.Item2);
+
+                    _danhSachGiayDiDuong.Add(giayMoi);
+                }
+            }
+        }
+
+        private void XuatGiay()
+        {
+            Document doc = new Document("Reports\\KeHoachMau.doc");
+
+            Table bang = doc.GetChild(NodeType.Table, 2, true) as Table;
+
+            int hangHienTai = 0;
+            string noiDungTong = "";
+            foreach(var cb in _danhSachGiayDiDuong.GroupBy(p => p.ID_CAN_BO))
+            {
+                var hang = bang.Rows[hangHienTai];
+                string noiDung = "";
+                foreach(var cuoc in cb)
+                    noiDung += $"- {_lstXa.FirstOrDefault(p => p.ID == cuoc.ID_DIA_BAN_XA)?.ND ?? "" }: từ ngày {cuoc.NGAY_DI?.ToString("dd/MM")} đến ngày {cuoc.NGAY_VE?.ToString("dd/MM/yyyy")}\r\n";
+                noiDung += "--------------------------------------------------------\r\n";
+                noiDungTong += noiDung;
+                hangHienTai++;
+            }
+
+            string noiDUng2 = "";
+            foreach(var xa in _danhSachGiayDiDuong.GroupBy(p => p.ID_DIA_BAN_XA))
+            {
+                foreach(var cb in xa.OrderBy(p => p.NGAY_DI).ThenBy(p => p.NGAY_VE))
+                    noiDUng2 += $"- {_lstXa.FirstOrDefault(p => p.ID == cb.ID_DIA_BAN_XA)?.ND ?? "" }: từ ngày {cb.NGAY_DI?.ToString("dd/MM")} đến ngày {cb.NGAY_VE?.ToString("dd/MM/yyyy")}\r\n";
+                noiDUng2 += "--------------------------------------------------------\r\n";
+            }
+
+            string tenFile = $"t{_thang}.doc";
+            //doc.Save($"t{_thang}.doc");
+            //Process.Start(tenFile);
+        }
+
+        List<List<int>> _boSo6Tuan = new List<List<int>>();
+        List<List<int>> _tuan = new List<List<int>>();
+        private void TaoBoSo()
+        {
+            #region Lấy các ngày có thể lấy của các tuần
+            DateTime ngayThang = new DateTime(_nam, _thang, 1);
+            int ngayCuoiThang = ngayThang.AddMonths(1).AddDays(-1).Day;
+
+            while (ngayThang.Month == _thang)
+            {
+                if (ngayThang.DayOfWeek == DayOfWeek.Saturday || ngayThang.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    if (ngayThang.DayOfWeek == DayOfWeek.Saturday)
+                        ngayThang = ngayThang.AddDays(2);//để sang thứ 2
+
+                    if (ngayThang.DayOfWeek == DayOfWeek.Sunday)
+                        ngayThang = ngayThang.AddDays(1);//để sang thứ 2
+                    if (ngayThang.Month != _thang)
+                        break;
+                    _tuan.Add(new List<int>());
+                }
+
+                if (_tuan.Count == 0)
+                    _tuan.Add(new List<int>());
+
+                //if (ngayThang.DayOfWeek != DayOfWeek.Saturday && ngayThang.DayOfWeek != DayOfWeek.Sunday)
+                _tuan.LastOrDefault().Add(ngayThang.Day);
+
+                ngayThang = ngayThang.AddDays(1);
+            }
+
+            //Thêm cho đủ 6 tuần
+            while (_tuan.Count < 6)
+                _tuan.Add(new List<int>());
+            #endregion
+
+            #region Tạo các trường hợp có thể (phân tích 13 thành 6 số nhỏ hơn bằng 5 (6 tuần, mỗi tuần 5 ngày))
+            for (int i6 = 0; i6 <= 5; i6++)
+            {
+                for (int i5 = 0; i5 <= 5; i5++)
+                {
+                    for (int i4 = 0; i4 <= 5; i4++)
+                    {
+                        for (int i3 = 0; i3 <= 5; i3++)
+                        {
+                            for (int i2 = 0; i2 <= 5; i2++)
+                            {
+                                for (int i1 = 0; i1 <= 5; i1++)
+                                {
+                                    if (i1 + i2 + i3 + i4 + i5 + i6 == 13)
+                                        _boSo6Tuan.Add(new List<int>() { i1, i2, i3, i4, i5, i6 });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region Loại bỏ các trường hợp không thỏa mãn
+            _boSo6Tuan = _boSo6Tuan.Where(p => p.Where(p2 => p2 == 0).Count() == 2).ToList();//Chỉ lấy 4 tuần
+            _boSo6Tuan = _boSo6Tuan.Where(p => (p[0] == 0 && p[1] == 0) || (p[4] == 0 && p[5] == 0) || (p[0] ==0 && p[5] == 0)).ToList();//Chỉ lấy 4 tuần => nên 2 tuần phải bằng 0
+            //Lấy các số thỏa mãn cho tháng này
+            _boSo6Tuan = _boSo6Tuan.Where(p => p[0] <= _tuan[0].Count
+                                            && p[1] <= _tuan[1].Count
+                                            && p[2] <= _tuan[2].Count
+                                            && p[3] <= _tuan[3].Count
+                                            && p[4] <= _tuan[4].Count
+                                            && p[5] <= _tuan[5].Count
+                                            ).ToList();
+            #endregion
+        }
+
+        List<int> _danhDauBoSoDaLay = new List<int>();
+        private List<int> LayMotBoSoNgauNhien()
+        {
+            Random ran = new Random(_boSo6Tuan.Count);
+            int viTri = ran.Next(0, _boSo6Tuan.Count);
+
+            int maxSoLanLay = _danhDauBoSoDaLay.Count / _boSo6Tuan.Count;
+
+            while(_danhDauBoSoDaLay.Count(p => p == viTri) > maxSoLanLay)
+                viTri = ran.Next(0, _boSo6Tuan.Count);
+
+            _danhDauBoSoDaLay.Add(viTri);
+            return _boSo6Tuan[viTri];
+        }
+
+        private Tuple<int, int> LayNgay(int vi_tri, List<int> bo_so)
+        {
+            int soNgayCanLay = bo_so[vi_tri];
+            List<Tuple<int, int>> danhSachKhoangCoTheLay = new List<Tuple<int, int>>();
+            for(int i = 0; i <= _tuan[vi_tri].Count - soNgayCanLay; i++)
+                danhSachKhoangCoTheLay.Add(new Tuple<int, int>(_tuan[vi_tri][i], _tuan[vi_tri][i + soNgayCanLay - 1]));
+            //Lấy ngẫu nhiên 1 khoảng
+            Random ran = new Random();
+            return danhSachKhoangCoTheLay[ran.Next(0, danhSachKhoangCoTheLay.Count)];
         }
     }
 }

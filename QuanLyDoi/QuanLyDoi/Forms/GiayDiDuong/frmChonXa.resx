@@ -117,6 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnXuatGiay.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAEXRFWHRUaXRsZQBQbGF5O1N0
+        YXJ0O11hQHoAAAP6SURBVFhHxZZ9UFRVHIY145pMNukflul/NX3MGKI2sWqBKbPysSaN60fZmGgSOJpa
+        jk0oybCyuCQIiLiuH+vigpECq0IYM62ZgrB8udaIkSCuZug4WTbONM3Y2++ebkznnEuDMGvPzDvDfe45
+        5733XHbvDgHwv0ZfBhGpSxRMBhGpSxRMBhGpSxRMBhGpSxRM8gy1f/l6xY7j8WO140EhdYmCSZ5h9hNz
+        QPl5Z1X8u6a3n3tI8wNC6hIFkzwhO78wob7LDcfXK1BYbfLmH417Wjt330hdomCSR9lxPA43f/Pjyu0m
+        HPZtAh3fzffErn/fGvGwNqbfSF2iYJJHyfPEoudOC/zX96HzVjWarpTD4U3G9srY5uzPjOHauH4hdYmC
+        SR4lp3w2rv/aiOZAAcuFnlIEbp+Fp9kCOvfHtiPGLRt3RT6ijf9PpC5RMMmjZH9uxNVfzsAXyOfSfuMI
+        /D9WYfdXK2ErM160lkRHanP6ROoSBZM8SlZpNLpu1aKxe7uU1qsOXLxRgWMtNtC4e5nuWUVpjqjHtLkS
+        UpcomORRthyciXPXXKjrsqH+co5u1PMXemqw37saluKZgQzXa/HafA6pSxRM8ijpzhnwdRfi6PllON2Z
+        hbrObN2cvZwL/7ViVLfl4NOKhdi8P6o01f7qGG0dhtQlCiZ5lLQ9kVSwDWUtC1DetgTe7zfj9CVbn2ns
+        LkL7T5UoqlkGmnuT1uj98pK6RMEkj/Kx/RWc7LCgtHmeFjM859+DtyMDp37I6s03l7bSR3Q3PQ43XKfW
+        gubdW18wzUlrDPt7qQFewIbCaahtT4Xbl8ClxPcGDrcuQdW3a+gCtqIl4ES130rbvwjrcg3fmVNeMNH8
+        RymDu4AP8gxUsg6uhjlSSnxmeizL4TmXgvQyIxVH3EncGP5J6MgQ9dmPoKjflkPVhVSkLlEwyaOsyXkZ
+        lW3JcNbHcTnU9CYqWpNgO2YCjfkzKWNy5dSY8S/SHPWuQyjSi0vqEgWTPMoq20v0D7gUe+tiWFwNCezY
+        fnIeNhyIQkrm5I6EFc+aaezjlOEUdct77/rfSF2iYJJHSbFOgbtxIfacmY0D9XNR3GBG6sEZSM6ccvet
+        DydYRz8x4kkaF0rhtlsPqUsUTPIoSZZJcNYlUObCUj4LqwoMeCc1rMYQM24SnR9J0d1uPaQuUTDJoyxP
+        D0debTTWOqZj6aaJ3fGJzywmP4qivoD63G49pC5RMMmjJKaFUXHY7/NXP587ZnzoOHL92m49pC5RMMkT
+        svijCSciYp4y0N/qS0ahDPhnmdQlCiZ51C1WP8/3vd16SF2iYJJHLVTveFDF/yB1iYLJICJ1iYLJICJ1
+        ieJBR1c+uGDIX5FNOTp9s3ZWAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="chonDiaBanXaBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
