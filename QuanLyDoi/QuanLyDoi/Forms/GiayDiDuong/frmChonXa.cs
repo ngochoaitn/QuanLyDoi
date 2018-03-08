@@ -94,6 +94,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
         private void TaoDanhSachGiayMoi()
         {
+            _danhDauBoSoDaLay.Clear();
             _danhSachGiayDiDuong = new List<GIAY_DI_DUONG>();
             foreach (ChonDiaBanXa chon in chonDiaBanXaBindingSource)
             {
@@ -121,36 +122,46 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             }
         }
 
-        private void XuatGiay()
+        private async void XuatGiay()
         {
             Document doc = new Document("Reports\\KeHoachMau.doc");
 
-            Table bang = doc.GetChild(NodeType.Table, 2, true) as Table;
+            doc.MailMerge.Execute(new[] { "Ngay_Thang_Nam" }, new[] { $"Ngân Sơn, ngày {new DateTime(_nam, _thang, 1).AddMonths(1).AddDays(-1).Day} tháng {_thang} năm {_nam}" });
+            doc.MailMerge.Execute(new[] { "Nam" }, new[] { _nam.ToString() });
+            doc.MailMerge.Execute(new[] { "Thang" }, new[] { _thang.ToString() });
 
+            Table bang = doc.GetChild(NodeType.Table, 1, true) as Table;
+            
             int hangHienTai = 0;
-            string noiDungTong = "";
+            bang.InsertRows(hangHienTai, hangHienTai, chonDiaBanXaBindingSource.Count - 1);
+
+            var  lstCanBo = await _db.CAN_BO.ToListAsync();
+
             foreach(var cb in _danhSachGiayDiDuong.GroupBy(p => p.ID_CAN_BO))
             {
                 var hang = bang.Rows[hangHienTai];
                 string noiDung = "";
-                foreach(var cuoc in cb)
-                    noiDung += $"- {_lstXa.FirstOrDefault(p => p.ID == cuoc.ID_DIA_BAN_XA)?.ND ?? "" }: từ ngày {cuoc.NGAY_DI?.ToString("dd/MM")} đến ngày {cuoc.NGAY_VE?.ToString("dd/MM/yyyy")}\r\n";
-                noiDung += "--------------------------------------------------------\r\n";
-                noiDungTong += noiDung;
+                foreach (var cuoc in cb)
+                    noiDung += $"- {_lstXa.FirstOrDefault(p => p.ID == cuoc.ID_DIA_BAN_XA)?.ND ?? "" }: từ ngày {cuoc.NGAY_DI?.ToString("dd/MM")} đến ngày {cuoc.NGAY_VE?.ToString("dd/MM/yyyy")}{ControlChar.LineBreak}";
+                bang.PutValue(hangHienTai, 1, lstCanBo.FirstOrDefault(p => p.IdCanBo == cb.FirstOrDefault().ID_CAN_BO).HoVaTen);
+                bang.PutValue(hangHienTai, 3, noiDung);
+                bang.Rows[hangHienTai].ChangeFont(1, bold:true);
+                bang.Rows[hangHienTai].ChangeFont(3, italic: true);
                 hangHienTai++;
             }
 
             string noiDUng2 = "";
             foreach(var xa in _danhSachGiayDiDuong.GroupBy(p => p.ID_DIA_BAN_XA))
             {
-                foreach(var cb in xa.OrderBy(p => p.NGAY_DI).ThenBy(p => p.NGAY_VE))
+                foreach (var cb in xa.OrderBy(p => p.NGAY_DI).ThenBy(p => p.NGAY_VE))
+                {
+                    //Đánh giá xem khả năng trùng đến đâu
                     noiDUng2 += $"- {_lstXa.FirstOrDefault(p => p.ID == cb.ID_DIA_BAN_XA)?.ND ?? "" }: từ ngày {cb.NGAY_DI?.ToString("dd/MM")} đến ngày {cb.NGAY_VE?.ToString("dd/MM/yyyy")}\r\n";
+                }
                 noiDUng2 += "--------------------------------------------------------\r\n";
             }
 
-            string tenFile = $"t{_thang}.doc";
-            //doc.Save($"t{_thang}.doc");
-            //Process.Start(tenFile);
+            doc.SaveAndOpenFile($"t{_thang}.doc");
         }
 
         List<List<int>> _boSo6Tuan = new List<List<int>>();

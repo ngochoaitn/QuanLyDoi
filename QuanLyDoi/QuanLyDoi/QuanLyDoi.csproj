@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>Dll\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="Aspose.Words">
-      <HintPath>..\packages\Aspose.Words\Aspose.Words.dll</HintPath>
+      <HintPath>Dll\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Data.v17.1" />
@@ -97,6 +100,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\DatabaseHelper.cs" />
+    <Compile Include="Support\ReportExtentionMethod.cs" />
     <Compile Include="Support\SequenceId.cs" />
     <EmbeddedResource Include="Forms\GiayDiDuong\frmChonXa.resx">
       <DependentUpon>frmChonXa.cs</DependentUpon>
@@ -139,7 +143,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
