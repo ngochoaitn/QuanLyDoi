@@ -17,6 +17,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
     public partial class frmNhapThongTinKhoiTao : DevExpress.XtraEditors.XtraForm
     {
         QuanLyDoiModel _db;
+        List<int> cacXaDuocChon = new List<int>();
 
         public frmNhapThongTinKhoiTao()
         {
@@ -43,6 +44,13 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 CheckEdit check = new CheckEdit();
                 check.Text = xa.ND;
                 check.Tag = xa.ID;
+                check.CheckedChanged += (s1, e1) =>
+                {
+                    if (check.Checked)
+                        cacXaDuocChon.Add(Convert.ToInt32(check.Tag));
+                    else
+                        cacXaDuocChon.RemoveAll(p => p == Convert.ToInt32(check.Tag));
+                };
 
                 this.layoutControl1.Controls.Add(check);
                 li.Control = check;
@@ -51,19 +59,18 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            List<int> cacXaDuocChon = new List<int>();
-            foreach(var l in groupCheckXa.Items)
-            {
-                if(l is LayoutControlItem)
-                {
-                    if ((l as LayoutControlItem).Control is CheckEdit)
-                    {
-                        var check = (l as LayoutControlItem).Control as CheckEdit;
-                        if (check.Checked)
-                            cacXaDuocChon.Add(Convert.ToInt32(check.Tag));
-                    }
-                }
-            }
+            //foreach(var l in groupCheckXa.Items)
+            //{
+            //    if(l is LayoutControlItem)
+            //    {
+            //        if ((l as LayoutControlItem).Control is CheckEdit)
+            //        {
+            //            var check = (l as LayoutControlItem).Control as CheckEdit;
+            //            if (check.Checked)
+            //                cacXaDuocChon.Add(Convert.ToInt32(check.Tag));
+            //        }
+            //    }
+            //}
             int thang = Convert.ToInt32(txtThang.Text);
             int nam = Convert.ToInt32(txtNam.Text);
 

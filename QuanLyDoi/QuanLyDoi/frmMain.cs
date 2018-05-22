@@ -29,6 +29,12 @@ namespace QuanLyDoi
         List<List<int>> _boSo6Tuan = new List<List<int>>();
 
         int _thang = 3, _nam = 2018;
+
+        private void timKiemTepBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Forms.TimKiem.frmTimKiemFileWord().ShowDialog();
+        }
+
         private void TaoBoSo()
         {
             #region Lấy các ngày có thể lấy của các tuần

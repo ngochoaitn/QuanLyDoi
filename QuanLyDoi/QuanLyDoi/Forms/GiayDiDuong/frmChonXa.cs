@@ -33,6 +33,8 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             _thang = thang;
             _nam = nam;
             _cacXaCoDau = cac_xa_co_dau;
+            txtThang.Text = _thang.ToString();
+            txtNam.Text = _nam.ToString();
         }
 
         private async void frmChonXa_Load(object sender, EventArgs e)
@@ -96,6 +98,9 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         {
             _danhDauBoSoDaLay.Clear();
             _danhSachGiayDiDuong = new List<GIAY_DI_DUONG>();
+            _thang = Convert.ToInt32(txtThang.Text);
+            _nam = Convert.ToInt32(txtNam.Text);
+
             foreach (ChonDiaBanXa chon in chonDiaBanXaBindingSource)
             {
                 var boSo = LayMotBoSoNgauNhien();//Sử dụng cho đồng chí này
@@ -166,11 +171,14 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
         List<List<int>> _boSo6Tuan = new List<List<int>>();
         List<List<int>> _tuan = new List<List<int>>();
+        List<int> _ngayLoaiBo = new List<int>();
         private void TaoBoSo()
         {
             #region Lấy các ngày có thể lấy của các tuần
             DateTime ngayThang = new DateTime(_nam, _thang, 1);
             int ngayCuoiThang = ngayThang.AddMonths(1).AddDays(-1).Day;
+
+            _tuan.Add(new List<int>());//Tạo tuần đầu tiên
 
             while (ngayThang.Month == _thang)
             {
@@ -183,14 +191,12 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                         ngayThang = ngayThang.AddDays(1);//để sang thứ 2
                     if (ngayThang.Month != _thang)
                         break;
+                    //Sang tuần mới
                     _tuan.Add(new List<int>());
                 }
 
-                if (_tuan.Count == 0)
-                    _tuan.Add(new List<int>());
-
-                //if (ngayThang.DayOfWeek != DayOfWeek.Saturday && ngayThang.DayOfWeek != DayOfWeek.Sunday)
-                _tuan.LastOrDefault().Add(ngayThang.Day);
+                if (!_ngayLoaiBo.Contains(ngayThang.Day))
+                    _tuan.LastOrDefault().Add(ngayThang.Day);
 
                 ngayThang = ngayThang.AddDays(1);
             }
