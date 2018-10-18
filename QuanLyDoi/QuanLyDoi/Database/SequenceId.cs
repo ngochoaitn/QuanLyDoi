@@ -10,10 +10,15 @@ namespace QuanLyDoi.Database
     internal class SequenceId
     {
         private static QuanLyDoiModel _dbStatic = new QuanLyDoiModel();
-        internal static int Sequence_Dec(string Seq_name, DbContext db)
+        internal static int Sequence_Int(string Seq_name, DbContext db)
         {
-            int seq = (int)(db.Database.SqlQuery<decimal>("SELECT NEXT VALUE FOR " + Seq_name).FirstOrDefault());
+            int seq = db.Database.SqlQuery<int>("SELECT NEXT VALUE FOR " + Seq_name).FirstOrDefault();
             return seq;
+        }
+
+        internal static int CAN_BO()
+        {
+            return Sequence_Int("SEQ_CAN_BO", _dbStatic);
         }
     }
 }

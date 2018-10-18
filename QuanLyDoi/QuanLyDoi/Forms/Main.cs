@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyDoi.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,16 @@ namespace QuanLyDoi.Forms
         private void quanLyCongVanDenBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new Forms.CongVan.frmCongVanDen().ShowDialog();
+        }
+
+        private void btnQuanLyThongTinCanBo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Forms.CanBo.DanhSachCanBo().ShowDialog();
+        }
+
+        private async void Main_Load(object sender, EventArgs e)
+        {
+            await Global.LoadBangMaAsync(Global.DbBangMa);
         }
     }
 }

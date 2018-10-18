@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.giayDiDuongBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.timKiemTepBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.quanLyCongVanDenBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnQuanLyThongTinCanBo = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,9 +48,10 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.giayDiDuongBarButtonItem,
             this.timKiemTepBarButtonItem,
-            this.quanLyCongVanDenBarButtonItem});
+            this.quanLyCongVanDenBarButtonItem,
+            this.btnQuanLyThongTinCanBo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 6;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -83,12 +85,28 @@
             this.quanLyCongVanDenBarButtonItem.Name = "quanLyCongVanDenBarButtonItem";
             this.quanLyCongVanDenBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.quanLyCongVanDenBarButtonItem_ItemClick);
             // 
+            // btnQuanLyThongTinCanBo
+            // 
+            this.btnQuanLyThongTinCanBo.Caption = "Quản lý thông tin cán bộ";
+            this.btnQuanLyThongTinCanBo.Id = 5;
+            this.btnQuanLyThongTinCanBo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyThongTinCanBo.ImageOptions.Image")));
+            this.btnQuanLyThongTinCanBo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnQuanLyThongTinCanBo.ImageOptions.LargeImage")));
+            this.btnQuanLyThongTinCanBo.Name = "btnQuanLyThongTinCanBo";
+            this.btnQuanLyThongTinCanBo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQuanLyThongTinCanBo_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
             this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
+            this.ribbonPage1.Text = "Quản lý đội";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnQuanLyThongTinCanBo);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Quản lý cán bộ";
             // 
             // ribbonPageGroup1
             // 
@@ -96,18 +114,19 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.timKiemTepBarButtonItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.quanLyCongVanDenBarButtonItem);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Tiện ích";
             // 
-            // frmMain
+            // Main
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 360);
             this.Controls.Add(this.ribbonControl1);
-            this.Name = "frmMain";
+            this.Name = "Main";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -123,6 +142,8 @@
         private DevExpress.XtraBars.BarButtonItem timKiemTepBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem quanLyCongVanDenBarButtonItem;
         private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
+        private DevExpress.XtraBars.BarButtonItem btnQuanLyThongTinCanBo;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }
 
