@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QuanLyDoi
+namespace QuanLyDoi.Forms
 {
-    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Main : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public frmMain()
+        public Main()
         {
             InitializeComponent();
         }

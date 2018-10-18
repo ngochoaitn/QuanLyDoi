@@ -1,6 +1,6 @@
-﻿namespace QuanLyDoi
+﻿namespace QuanLyDoi.Forms
 {
-    partial class frmMain
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.giayDiDuongBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.timKiemTepBarButtonItem = new DevExpress.XtraBars.BarButtonItem();

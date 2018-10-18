@@ -7,4 +7,43 @@
 -->
 <GenericObjectDataSource DisplayName="CAN_BO" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <TypeInfo>QuanLyDoi.Database.CAN_BO, QuanLyDoi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeUISetting>
+      <PropertyUISettings>
+         <PropertyUISetting Name="IdChucVu">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="SearchLookUpEdit" Type="DevExpress.XtraEditors.SearchLookUpEdit" AssemblyName="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.2" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="IdCapBac">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="SearchLookUpEdit" Type="DevExpress.XtraEditors.SearchLookUpEdit" AssemblyName="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.2" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="TrinhDoLyLuanChinhTri">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="ComboBoxEdit" Type="DevExpress.XtraEditors.ComboBoxEdit" AssemblyName="DevExpress.XtraEditors.v17.1" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="TrinhDoNgoaiNgu">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="ComboBoxEdit" Type="DevExpress.XtraEditors.ComboBoxEdit" AssemblyName="DevExpress.XtraEditors.v17.1" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="TrinhDoTinHoc">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="ComboBoxEdit" Type="DevExpress.XtraEditors.ComboBoxEdit" AssemblyName="DevExpress.XtraEditors.v17.1" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+      </PropertyUISettings>
+   </TypeUISetting>
 </GenericObjectDataSource>
