@@ -33,11 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells">
-      <HintPath>Dll\Aspose.Cells.dll</HintPath>
+    <Reference Include="Aspose.Cells, Version=7.2.1.0, Culture=neutral, PublicKeyToken=304f5aa34aff2288, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=18.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.18.5.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.Words, Version=11.3.0.0, Culture=neutral, PublicKeyToken=47d5d0e1ef9d080b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Data.v17.1" />
@@ -72,12 +74,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\CustomizeGridview.cs" />
     <Compile Include="Database\CAN_BO.cs" />
     <Compile Include="Database\GIAY_DI_DUONG.cs" />
     <Compile Include="Database\MA_CAP_BAC.cs" />
     <Compile Include="Database\MA_CHUC_VU.cs" />
     <Compile Include="Database\MA_DIA_BAN_XA.cs" />
     <Compile Include="Database\QuanLyDoiModel.cs" />
+    <Compile Include="Database\SequenceId.cs" />
     <Compile Include="Forms\GiayDiDuong\frmChonXa.cs">
       <SubType>Form</SubType>
     </Compile>
