@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChonXa));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtNgayLoai = new DevExpress.XtraEditors.TextEdit();
+            this.txtNam = new DevExpress.XtraEditors.TextEdit();
+            this.txtThang = new DevExpress.XtraEditors.TextEdit();
             this.btnXuatGiay = new DevExpress.XtraEditors.SimpleButton();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.chonDiaBanXaGridControl = new DevExpress.XtraGrid.GridControl();
@@ -56,15 +59,15 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.txtThang = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNam = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNgayLoai = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLoai.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNam.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtThang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chonDiaBanXaGridControl)).BeginInit();
@@ -77,11 +80,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtThang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +101,30 @@
             this.layoutControl1.Size = new System.Drawing.Size(865, 376);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtNgayLoai
+            // 
+            this.txtNgayLoai.Location = new System.Drawing.Point(86, 27);
+            this.txtNgayLoai.Name = "txtNgayLoai";
+            this.txtNgayLoai.Size = new System.Drawing.Size(776, 20);
+            this.txtNgayLoai.StyleController = this.layoutControl1;
+            this.txtNgayLoai.TabIndex = 8;
+            // 
+            // txtNam
+            // 
+            this.txtNam.Location = new System.Drawing.Point(242, 3);
+            this.txtNam.Name = "txtNam";
+            this.txtNam.Size = new System.Drawing.Size(74, 20);
+            this.txtNam.StyleController = this.layoutControl1;
+            this.txtNam.TabIndex = 7;
+            // 
+            // txtThang
+            // 
+            this.txtThang.Location = new System.Drawing.Point(86, 3);
+            this.txtThang.Name = "txtThang";
+            this.txtThang.Size = new System.Drawing.Size(69, 20);
+            this.txtThang.StyleController = this.layoutControl1;
+            this.txtThang.TabIndex = 6;
             // 
             // btnXuatGiay
             // 
@@ -162,6 +186,7 @@
             this.bgrvChonXa.GridControl = this.chonDiaBanXaGridControl;
             this.bgrvChonXa.Name = "bgrvChonXa";
             this.bgrvChonXa.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.bgrvChonXa_CellValueChanging);
+            this.bgrvChonXa.KeyUp += new System.Windows.Forms.KeyEventHandler(this.bgrvChonXa_KeyUp);
             // 
             // gridBand1
             // 
@@ -339,14 +364,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(762, 42);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // txtThang
-            // 
-            this.txtThang.Location = new System.Drawing.Point(86, 3);
-            this.txtThang.Name = "txtThang";
-            this.txtThang.Size = new System.Drawing.Size(69, 20);
-            this.txtThang.StyleController = this.layoutControl1;
-            this.txtThang.TabIndex = 6;
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtThang;
@@ -356,14 +373,6 @@
             this.layoutControlItem3.Text = "Tháng";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(80, 13);
             // 
-            // txtNam
-            // 
-            this.txtNam.Location = new System.Drawing.Point(242, 3);
-            this.txtNam.Name = "txtNam";
-            this.txtNam.Size = new System.Drawing.Size(74, 20);
-            this.txtNam.StyleController = this.layoutControl1;
-            this.txtNam.TabIndex = 7;
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtNam;
@@ -372,14 +381,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(161, 24);
             this.layoutControlItem4.Text = "Năm";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(80, 13);
-            // 
-            // txtNgayLoai
-            // 
-            this.txtNgayLoai.Location = new System.Drawing.Point(86, 27);
-            this.txtNgayLoai.Name = "txtNgayLoai";
-            this.txtNgayLoai.Size = new System.Drawing.Size(776, 20);
-            this.txtNgayLoai.StyleController = this.layoutControl1;
-            this.txtNgayLoai.TabIndex = 8;
             // 
             // layoutControlItem5
             // 
@@ -409,6 +410,9 @@
             this.Load += new System.EventHandler(this.frmChonXa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLoai.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNam.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtThang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chonDiaBanXaGridControl)).EndInit();
@@ -421,11 +425,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtThang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNam.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayLoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);

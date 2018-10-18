@@ -165,6 +165,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 }
                 noiDUng2 += "--------------------------------------------------------\r\n";
             }
+            doc.MailMerge.Execute(new[] { "Log" }, new[] { noiDUng2 });
 
             doc.SaveAndOpenFile($"t{_thang}.doc");
         }
@@ -196,7 +197,21 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 }
 
                 if (!_ngayLoaiBo.Contains(ngayThang.Day))
+                {
                     _tuan.LastOrDefault().Add(ngayThang.Day);
+                }
+                else
+                {
+                    #region Các ngày lễ
+                    while (_ngayLoaiBo.Contains(ngayThang.Day))
+                        ngayThang = ngayThang.AddDays(1);
+
+                    //Nếu gặp ngày lễ coi như thêm 1 tuần
+                    _tuan.Add(new List<int>());
+
+                    ngayThang = ngayThang.AddDays(-1);
+                    #endregion
+                }
 
                 ngayThang = ngayThang.AddDays(1);
             }
@@ -256,6 +271,12 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
             _danhDauBoSoDaLay.Add(viTri);
             return _boSo6Tuan[viTri];
+        }
+
+        private void bgrvChonXa_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+                chonDiaBanXaBindingSource.RemoveCurrent();
         }
 
         private Tuple<int, int> LayNgay(int vi_tri, List<int> bo_so)

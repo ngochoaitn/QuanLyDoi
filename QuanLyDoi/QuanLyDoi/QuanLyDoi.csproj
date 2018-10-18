@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuanLyDoi</RootNamespace>
     <AssemblyName>QuanLyDoi</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells">
@@ -50,12 +53,10 @@
     <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -73,11 +74,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\CAN_BO.cs" />
+    <Compile Include="Database\CONG_VAN.cs" />
     <Compile Include="Database\GIAY_DI_DUONG.cs" />
     <Compile Include="Database\MA_CAP_BAC.cs" />
     <Compile Include="Database\MA_CHUC_VU.cs" />
     <Compile Include="Database\MA_DIA_BAN_XA.cs" />
+    <Compile Include="Database\MA_LOAI_CONG_VAN.cs" />
     <Compile Include="Database\QuanLyDoiModel.cs" />
+    <Compile Include="Forms\CongVan\frmCongVanDen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CongVan\frmCongVanDen.Designer.cs">
+      <DependentUpon>frmCongVanDen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GiayDiDuong\frmChonXa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +118,9 @@
     <Compile Include="Support\DatabaseHelper.cs" />
     <Compile Include="Support\ReportExtentionMethod.cs" />
     <Compile Include="Support\SequenceId.cs" />
+    <EmbeddedResource Include="Forms\CongVan\frmCongVanDen.resx">
+      <DependentUpon>frmCongVanDen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GiayDiDuong\frmChonXa.resx">
       <DependentUpon>frmChonXa.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,15 +142,18 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Database\dbQuanLyDoi.rar" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CAN_BO.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.GIAY_DI_DUONG.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CAP_BAC.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CHUC_VU.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DIA_BAN_XA.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.MA_LOAI_CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Forms.GiayDiDuong.ChonDiaBanXa.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

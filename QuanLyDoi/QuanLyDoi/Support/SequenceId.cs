@@ -20,5 +20,10 @@ namespace QuanLyDoi.Support
         {
             return await GetNextSequenceAsync("SEQ_GIAY_DI_DUONG");
         }
+
+        public static async Task<int> CONG_VAN()
+        {
+            return await GetNextSequenceAsync("SEQ_CONG_VAN");
+        }
     }
 }
