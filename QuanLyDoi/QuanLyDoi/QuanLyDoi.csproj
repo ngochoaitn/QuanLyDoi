@@ -75,6 +75,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\BAO_CAO_DINH_KY.cs" />
+    <Compile Include="Database\BAO_CAO_DINH_KY_NGAY_BAO_CAO.cs" />
+    <Compile Include="Forms\CongVan\BaoCaoDinhKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CongVan\BaoCaoDinhKy.Designer.cs">
+      <DependentUpon>BaoCaoDinhKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CustomizeGridview.cs" />
     <Compile Include="Database\CAN_BO.cs" />
     <Compile Include="Database\CONG_VAN.cs" />
@@ -133,6 +141,9 @@
     <EmbeddedResource Include="Forms\CanBo\DanhSachCanBo.resx">
       <DependentUpon>DanhSachCanBo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CongVan\BaoCaoDinhKy.resx">
+      <DependentUpon>BaoCaoDinhKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CongVan\frmCongVanDen.resx">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +173,8 @@
     <None Include="App.config" />
     <None Include="Database\dbQuanLyDoi.rar" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.BAO_CAO_DINH_KY.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.BAO_CAO_DINH_KY_NGAY_BAO_CAO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CAN_BO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.GIAY_DI_DUONG.datasource" />
@@ -169,6 +182,7 @@
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CHUC_VU.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DIA_BAN_XA.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_LOAI_CONG_VAN.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.TEP_TIN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Forms.GiayDiDuong.ChonDiaBanXa.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

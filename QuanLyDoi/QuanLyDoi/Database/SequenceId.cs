@@ -20,5 +20,20 @@ namespace QuanLyDoi.Database
         {
             return Sequence_Int("SEQ_CAN_BO", _dbStatic);
         }
+
+        internal static int TEP_TIN()
+        {
+            return Sequence_Int("SEQ_TEP_TIN", _dbStatic);
+        }
+
+        internal static int BAO_CAO_DINH_KY()
+        {
+            return Sequence_Int("SEQ_BAO_CAO_DINH_KY", _dbStatic);
+        }
+
+        internal static int BAO_CAO_DINH_KY_NGAY_BAO_CAO()
+        {
+            return Sequence_Int("SEQ_BAO_CAO_DINH_KY_NGAY_BAO_CAO", _dbStatic);
+        }
     }
 }

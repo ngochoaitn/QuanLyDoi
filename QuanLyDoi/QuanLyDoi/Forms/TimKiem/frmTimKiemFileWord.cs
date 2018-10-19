@@ -46,7 +46,7 @@ namespace QuanLyDoi.Forms.TimKiem
                                     _lstResult.Add(file);
                                     fileInfoBindingSource.Add(file);
                                 };
-                            lblTrangThai.ChangeTextAsyc(file.FullName, Color.Blue);
+                            lblTrangThai.ChangeTextAsync(file.FullName, Color.Blue);
                         }
                         catch
                         {
@@ -95,7 +95,7 @@ namespace QuanLyDoi.Forms.TimKiem
 
         private void findBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lblTrangThai.ChangeTextAsyc("Tìm kiếm hoàn tất", Color.Blue);
+            lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn tất", Color.Blue);
         }
     }
 }

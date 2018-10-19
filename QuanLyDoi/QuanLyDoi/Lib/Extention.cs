@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace QuanLyDoi.Lib
             return doc.GetText().Contains(word);
         }
 
-        public static void ChangeTextAsyc(this DevExpress.XtraEditors.LabelControl lbl, string text, Color force_color)
+        public static void ChangeTextAsync(this DevExpress.XtraEditors.LabelControl lbl, string text, Color force_color)
         {
             if(lbl.InvokeRequired)
             {
@@ -36,6 +37,31 @@ namespace QuanLyDoi.Lib
                 lbl.Text = text;
                 lbl.ForeColor = force_color;
             }
+        }
+
+        public static byte[] ObjectToByteArray(this object obj)
+        {
+            if (obj == null)
+                return null;
+
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, obj);
+
+            return ms.ToArray();
+        }
+
+        public static T ByteArrayToObject<T>(this byte[] arrBytes) where T:class
+        {
+            if (arrBytes == null || arrBytes.Count() == 0)
+                return null;
+            MemoryStream memStream = new MemoryStream();
+            BinaryFormatter binForm = new BinaryFormatter();
+            memStream.Write(arrBytes, 0, arrBytes.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            T obj = (T)binForm.Deserialize(memStream);
+
+            return obj;
         }
     }
 }

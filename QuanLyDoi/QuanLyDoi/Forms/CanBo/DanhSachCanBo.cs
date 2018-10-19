@@ -18,6 +18,8 @@ namespace QuanLyDoi.Forms.CanBo
     public partial class DanhSachCanBo : XtraForm
     {
         QuanLyDoiModel _db;
+        private CAN_BO Current { get { return cAN_BOBindingSource.Current as CAN_BO; } }
+
         public DanhSachCanBo()
         {
             InitializeComponent();
@@ -47,8 +49,7 @@ namespace QuanLyDoi.Forms.CanBo
 
         private async void XoaCanBo(object sender, EventArgs e)
         {
-            var canBo = cAN_BOBindingSource.Current as CAN_BO;
-            if(canBo != null
+            if(this.Current != null
                 && XtraMessageBox.Show("Xác nhận xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
             {
                 cAN_BOBindingSource.RemoveCurrent();
@@ -71,6 +72,37 @@ namespace QuanLyDoi.Forms.CanBo
         private async void DanhSachCanBo_FormClosing(object sender, FormClosingEventArgs e)
         {
             await _db.SaveChangesAsync();
+        }
+
+        private async void picAnhDaiDien_EditValueChanged(object sender, EventArgs e)
+        {
+            TEP_TIN anh;
+            if (this.Current.IdAnhDaiDien.HasValue)
+                anh = await _db.TEP_TIN.FindAsync(this.Current.IdAnhDaiDien.Value);
+            else
+            {
+                anh = new TEP_TIN();
+                anh.Id = SequenceId.TEP_TIN();
+                anh.TenTep = $"Ảnh đồng chí {this.Current.HoVaTen}";
+                _db.TEP_TIN.Add(anh);
+                this.Current.IdAnhDaiDien = anh.Id;
+            }
+            anh.NoiDungTep = picAnhDaiDien.Image.ObjectToByteArray();
+
+            await _db.SaveChangesAsync();
+        }
+
+        private async void cAN_BOBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            if (this.Current.IdAnhDaiDien.HasValue)
+                picAnhDaiDien.Image = (await _db.TEP_TIN.FindAsync(this.Current.IdAnhDaiDien.Value)).NoiDungTep.ByteArrayToObject<Image>();
+            else
+                picAnhDaiDien.Image = null;
+        }
+
+        private void picAnhDaiDien_DoubleClick(object sender, EventArgs e)
+        {
+            picAnhDaiDien.LoadImage();
         }
     }
 }

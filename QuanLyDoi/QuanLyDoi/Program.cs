@@ -21,6 +21,7 @@ namespace QuanLyDoi
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2013";  // <<< NEW LINE
             Application.Run(new Forms.Main());
         }
     }

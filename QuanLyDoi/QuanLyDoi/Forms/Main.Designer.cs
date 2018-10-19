@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.giayDiDuongBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -37,7 +38,8 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.btnBaoCaoDinhKy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,13 +51,14 @@
             this.giayDiDuongBarButtonItem,
             this.timKiemTepBarButtonItem,
             this.quanLyCongVanDenBarButtonItem,
-            this.btnQuanLyThongTinCanBo});
+            this.btnQuanLyThongTinCanBo,
+            this.btnBaoCaoDinhKy});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
+            this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.Size = new System.Drawing.Size(758, 143);
             // 
             // giayDiDuongBarButtonItem
@@ -113,8 +116,18 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.giayDiDuongBarButtonItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.timKiemTepBarButtonItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.quanLyCongVanDenBarButtonItem);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnBaoCaoDinhKy);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tiện ích";
+            // 
+            // btnBaoCaoDinhKy
+            // 
+            this.btnBaoCaoDinhKy.Caption = "Danh sách báo cáo định kỳ";
+            this.btnBaoCaoDinhKy.Id = 6;
+            this.btnBaoCaoDinhKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnBaoCaoDinhKy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnBaoCaoDinhKy.Name = "btnBaoCaoDinhKy";
+            this.btnBaoCaoDinhKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoDinhKy_ItemClick);
             // 
             // Main
             // 
@@ -144,6 +157,7 @@
         private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
         private DevExpress.XtraBars.BarButtonItem btnQuanLyThongTinCanBo;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem btnBaoCaoDinhKy;
     }
 }
 

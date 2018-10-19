@@ -17,6 +17,11 @@ namespace QuanLyDoi.Forms
             InitializeComponent();
         }
 
+        private async void Main_Load(object sender, EventArgs e)
+        {
+            await Global.LoadBangMaAsync(Global.DbBangMa);
+        }
+
         private void giayDiDuongBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             alertControl1.Show(this, "Caption", "Text");
@@ -38,9 +43,9 @@ namespace QuanLyDoi.Forms
             new Forms.CanBo.DanhSachCanBo().ShowDialog();
         }
 
-        private async void Main_Load(object sender, EventArgs e)
+        private void btnBaoCaoDinhKy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            await Global.LoadBangMaAsync(Global.DbBangMa);
+            new Forms.CongVan.BaoCaoDinhKy().ShowDialog();
         }
     }
 }

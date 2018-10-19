@@ -19,6 +19,9 @@ namespace QuanLyDoi.Database
         public virtual DbSet<MA_CHUC_VU> MA_CHUC_VU { get; set; }
         public virtual DbSet<MA_DIA_BAN_XA> MA_DIA_BAN_XA { get; set; }
         public virtual DbSet<MA_LOAI_CONG_VAN> MA_LOAI_CONG_VAN { get; set; }
+        public virtual DbSet<TEP_TIN> TEP_TIN { get; set; }
+        public virtual DbSet<BAO_CAO_DINH_KY> BAO_CAO_DINH_KY { get; set; }
+        public virtual DbSet<BAO_CAO_DINH_KY_NGAY_BAO_CAO> BAO_CAO_DINH_KY_NGAY_BAO_CAO { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
