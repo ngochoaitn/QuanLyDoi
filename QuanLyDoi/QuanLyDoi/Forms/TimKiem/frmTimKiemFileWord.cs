@@ -27,7 +27,8 @@ namespace QuanLyDoi.Forms.TimKiem
 
         private void TimKiemThuMuc(DirectoryInfo dir)
         {
-            Debug.WriteLine($"Tìm thư mục {dir.FullName}");
+            //Debug.WriteLine($"Tìm thư mục {dir.FullName}");
+            lblTrangThai.ChangeTextAsync($"Tìm thư mục {dir.FullName}", Color.Blue);
             try
             {
                 Document doc = new Document();
@@ -40,17 +41,18 @@ namespace QuanLyDoi.Forms.TimKiem
                         {
                             doc = new Document(file.FullName);
                             if (doc.FindWord(txtTuKhoa.Text))
-                                //fileInfoBindingSource.Add(file);
-                                lock(_lstResult)
+                            {
+                                lock (_lstResult)
                                 {
                                     _lstResult.Add(file);
                                     fileInfoBindingSource.Add(file);
                                 };
-                            lblTrangThai.ChangeTextAsync(file.FullName, Color.Blue);
+                            }
+                            
                         }
-                        catch
+                        catch(Exception ex)
                         {
-                            //fileInfoBindingSource.Add(file);
+                            Debug.WriteLine($"Lỗi: {file.FullName}\r\n{ex.Message}");
                         }
                     }
                 }
@@ -70,8 +72,12 @@ namespace QuanLyDoi.Forms.TimKiem
         {
             //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
             //TimKiemThuMuc(new DirectoryInfo(txtThuMuc.Text));
-            _lstResult = new List<FileInfo>();
-            findBackgroundWorker.RunWorkerAsync();
+            if (btnTimKiem.Text == "Tìm kiếm")
+            {
+                btnTimKiem.Text = "Dừng";
+                _lstResult = new List<FileInfo>();
+                findBackgroundWorker.RunWorkerAsync();
+            }
         }
 
         private void btnChonThuMuc_Click(object sender, EventArgs e)

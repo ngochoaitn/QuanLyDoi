@@ -35,7 +35,7 @@
             this.btnChonThuMuc = new DevExpress.XtraEditors.SimpleButton();
             this.txtThuMuc = new DevExpress.XtraEditors.TextEdit();
             this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.fileInfoGridControl = new DevExpress.XtraGrid.GridControl();
             this.fileInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grvFileInfo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,7 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtThuMuc.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileInfoGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvFileInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuKhoa.Properties)).BeginInit();
@@ -84,19 +84,19 @@
             this.layoutControl1.Controls.Add(this.btnChonThuMuc);
             this.layoutControl1.Controls.Add(this.txtThuMuc);
             this.layoutControl1.Controls.Add(this.btnTimKiem);
-            this.layoutControl1.Controls.Add(this.gridControl1);
+            this.layoutControl1.Controls.Add(this.fileInfoGridControl);
             this.layoutControl1.Controls.Add(this.txtTuKhoa);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(659, 347);
+            this.layoutControl1.Size = new System.Drawing.Size(772, 418);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // lblTrangThai
             // 
-            this.lblTrangThai.Location = new System.Drawing.Point(12, 64);
+            this.lblTrangThai.Location = new System.Drawing.Point(12, 393);
             this.lblTrangThai.Name = "lblTrangThai";
             this.lblTrangThai.Size = new System.Drawing.Size(216, 13);
             this.lblTrangThai.StyleController = this.layoutControl1;
@@ -105,9 +105,9 @@
             // 
             // btnChonThuMuc
             // 
-            this.btnChonThuMuc.Location = new System.Drawing.Point(589, 12);
+            this.btnChonThuMuc.Location = new System.Drawing.Point(691, 12);
             this.btnChonThuMuc.Name = "btnChonThuMuc";
-            this.btnChonThuMuc.Size = new System.Drawing.Size(58, 22);
+            this.btnChonThuMuc.Size = new System.Drawing.Size(69, 22);
             this.btnChonThuMuc.StyleController = this.layoutControl1;
             this.btnChonThuMuc.TabIndex = 8;
             this.btnChonThuMuc.Text = "...";
@@ -118,30 +118,30 @@
             this.txtThuMuc.EditValue = "D:\\";
             this.txtThuMuc.Location = new System.Drawing.Point(56, 12);
             this.txtThuMuc.Name = "txtThuMuc";
-            this.txtThuMuc.Size = new System.Drawing.Size(529, 20);
+            this.txtThuMuc.Size = new System.Drawing.Size(631, 20);
             this.txtThuMuc.StyleController = this.layoutControl1;
             this.txtThuMuc.TabIndex = 7;
             // 
             // btnTimKiem
             // 
             this.btnTimKiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.ImageOptions.Image")));
-            this.btnTimKiem.Location = new System.Drawing.Point(589, 38);
+            this.btnTimKiem.Location = new System.Drawing.Point(691, 38);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(58, 22);
+            this.btnTimKiem.Size = new System.Drawing.Size(69, 22);
             this.btnTimKiem.StyleController = this.layoutControl1;
             this.btnTimKiem.TabIndex = 6;
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // gridControl1
+            // fileInfoGridControl
             // 
-            this.gridControl1.DataSource = this.fileInfoBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 81);
-            this.gridControl1.MainView = this.grvFileInfo;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(635, 254);
-            this.gridControl1.TabIndex = 5;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.fileInfoGridControl.DataSource = this.fileInfoBindingSource;
+            this.fileInfoGridControl.Location = new System.Drawing.Point(12, 64);
+            this.fileInfoGridControl.MainView = this.grvFileInfo;
+            this.fileInfoGridControl.Name = "fileInfoGridControl";
+            this.fileInfoGridControl.Size = new System.Drawing.Size(748, 325);
+            this.fileInfoGridControl.TabIndex = 5;
+            this.fileInfoGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grvFileInfo});
             // 
             // fileInfoBindingSource
@@ -168,13 +168,15 @@
             this.colLastWriteTime,
             this.colLastWriteTimeUtc,
             this.colAttributes});
-            this.grvFileInfo.GridControl = this.gridControl1;
+            this.grvFileInfo.GridControl = this.fileInfoGridControl;
             this.grvFileInfo.Name = "grvFileInfo";
+            this.grvFileInfo.OptionsBehavior.Editable = false;
             this.grvFileInfo.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.grvFileInfo.DoubleClick += new System.EventHandler(this.grvFileInfo_DoubleClick);
             // 
             // colName
             // 
+            this.colName.Caption = "Tên tệp";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.OptionsColumn.AllowEdit = false;
@@ -190,6 +192,7 @@
             // 
             // colDirectoryName
             // 
+            this.colDirectoryName.Caption = "Thư mục";
             this.colDirectoryName.FieldName = "DirectoryName";
             this.colDirectoryName.Name = "colDirectoryName";
             this.colDirectoryName.OptionsColumn.ReadOnly = true;
@@ -215,7 +218,8 @@
             // 
             // colFullName
             // 
-            this.colFullName.FieldName = "FullName";
+            this.colFullName.Caption = "Tên tệp";
+            this.colFullName.FieldName = "Name";
             this.colFullName.Name = "colFullName";
             this.colFullName.OptionsColumn.AllowEdit = false;
             this.colFullName.OptionsColumn.ReadOnly = true;
@@ -230,6 +234,7 @@
             // 
             // colCreationTime
             // 
+            this.colCreationTime.Caption = "Ngày tạo";
             this.colCreationTime.FieldName = "CreationTime";
             this.colCreationTime.MaxWidth = 75;
             this.colCreationTime.MinWidth = 75;
@@ -245,6 +250,7 @@
             // 
             // colLastAccessTime
             // 
+            this.colLastAccessTime.Caption = "Ngày mở cuối cùng";
             this.colLastAccessTime.FieldName = "LastAccessTime";
             this.colLastAccessTime.MaxWidth = 75;
             this.colLastAccessTime.MinWidth = 75;
@@ -260,6 +266,7 @@
             // 
             // colLastWriteTime
             // 
+            this.colLastWriteTime.Caption = "Ngày sửa cuối cùng";
             this.colLastWriteTime.FieldName = "LastWriteTime";
             this.colLastWriteTime.MaxWidth = 75;
             this.colLastWriteTime.MinWidth = 75;
@@ -283,7 +290,7 @@
             this.txtTuKhoa.EditValue = "văn nghệ, thể dục ";
             this.txtTuKhoa.Location = new System.Drawing.Point(56, 38);
             this.txtTuKhoa.Name = "txtTuKhoa";
-            this.txtTuKhoa.Size = new System.Drawing.Size(529, 20);
+            this.txtTuKhoa.Size = new System.Drawing.Size(631, 20);
             this.txtTuKhoa.StyleController = this.layoutControl1;
             this.txtTuKhoa.TabIndex = 4;
             // 
@@ -298,9 +305,8 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(659, 347);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(772, 418);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -308,25 +314,25 @@
             this.layoutControlItem1.Control = this.txtTuKhoa;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(577, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(679, 26);
             this.layoutControlItem1.Text = "Từ khóa";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(41, 13);
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.gridControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 69);
+            this.layoutControlItem2.Control = this.fileInfoGridControl;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(639, 258);
+            this.layoutControlItem2.Size = new System.Drawing.Size(752, 329);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnTimKiem;
-            this.layoutControlItem3.Location = new System.Drawing.Point(577, 26);
+            this.layoutControlItem3.Location = new System.Drawing.Point(679, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(62, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(73, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -335,25 +341,25 @@
             this.layoutControlItem4.Control = this.txtThuMuc;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(577, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(679, 26);
             this.layoutControlItem4.Text = "Thư mục";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(41, 13);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnChonThuMuc;
-            this.layoutControlItem5.Location = new System.Drawing.Point(577, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(679, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(62, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(73, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.lblTrangThai;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 381);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(639, 17);
+            this.layoutControlItem6.Size = new System.Drawing.Size(752, 17);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -366,14 +372,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 347);
+            this.ClientSize = new System.Drawing.Size(772, 418);
             this.Controls.Add(this.layoutControl1);
             this.Name = "frmTimKiemFileWord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tìm kiếm nội dung tệp văn bản";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtThuMuc.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileInfoGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvFileInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuKhoa.Properties)).EndInit();
@@ -395,7 +402,7 @@
         private DevExpress.XtraEditors.TextEdit txtTuKhoa;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private System.Windows.Forms.BindingSource fileInfoBindingSource;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl fileInfoGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView grvFileInfo;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colLength;

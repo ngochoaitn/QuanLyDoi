@@ -19,7 +19,7 @@ namespace QuanLyDoi.Lib
 
         public static bool FindWord(this Document doc, string word)
         {
-            return doc.GetText().Contains(word);
+            return doc.GetText().ToLower().Contains(word.ToLower());
         }
 
         public static void ChangeTextAsync(this DevExpress.XtraEditors.LabelControl lbl, string text, Color force_color)
