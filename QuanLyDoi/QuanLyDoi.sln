@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyDoi", "QuanLyDoi\QuanLyDoi.csproj", "{F395B044-91D8-4976-B18F-B33EFBDFFF5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyDoi.Test", "QuanLyDoi.Test\QuanLyDoi.Test.csproj", "{FFFEE7F0-400F-433C-BE86-0BB28F566CCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F395B044-91D8-4976-B18F-B33EFBDFFF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F395B044-91D8-4976-B18F-B33EFBDFFF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F395B044-91D8-4976-B18F-B33EFBDFFF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFFEE7F0-400F-433C-BE86-0BB28F566CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFEE7F0-400F-433C-BE86-0BB28F566CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFEE7F0-400F-433C-BE86-0BB28F566CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFEE7F0-400F-433C-BE86-0BB28F566CCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
