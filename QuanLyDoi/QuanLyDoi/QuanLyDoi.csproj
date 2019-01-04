@@ -133,7 +133,6 @@
     </Compile>
     <Compile Include="Lib\Extention.cs" />
     <Compile Include="Lib\Global.cs" />
-    <Compile Include="Lib\TaoBoSo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\DatabaseHelper.cs" />
