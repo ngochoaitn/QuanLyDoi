@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QuanLyDoi.Forms.GiayDiDuong;
 
 namespace QuanLyDoi.Test
 {
@@ -13,8 +14,8 @@ namespace QuanLyDoi.Test
         {
             //List<int> maxVal = new List<int>() { 4, 5, 5, 5 };
             List<int> maxVal = new List<int>() { 2, 5, 5, 5, 4 };
-            new Lib.TaoBoSo(maxVal).TienHanhTao();
-            Assert.IsTrue(true);
+            BoSo boSo = new BoSo(maxVal);
+            Assert.IsTrue(boSo.DanhSachKetQua.Count != 0);
         }
 
         [TestMethod]
@@ -22,8 +23,8 @@ namespace QuanLyDoi.Test
         {
             //List<int> maxVal = new List<int>() { 2, 5, 5, 5, 4 };
             List<int> maxVal = new List<int>() { 3, 2 , 2, 5, 4 };
-            new Lib.TaoBoSo(maxVal).TienHanhTao(validate);
-            Assert.IsTrue(true);
+            BoSo boSo = new BoSo(maxVal, validate);
+            Assert.IsTrue(boSo.DanhSachKetQua.Count != 0);
         }
 
         private bool validate(List<int> arg)
@@ -34,13 +35,6 @@ namespace QuanLyDoi.Test
             //Tổng khác 13 thì loại
             if (arg.Sum() != 13)
                 return false;
-            //Loại 4 số khác không không liên tiếp
-            //for (int i = 0; i < arg.Count - 4 + 1; i++)
-            //    if (arg[i] != 0
-            //        && arg[i + 1] != 0
-            //        && arg[i + 2] != 0
-            //        && arg[i + 3] != 0)
-            //        return true;
             return true;
         }
     }
