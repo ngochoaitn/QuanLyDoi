@@ -40,7 +40,7 @@ namespace QuanLyDoi.Forms.TimKiem
                         try
                         {
                             doc = new Document(file.FullName);
-                            if (doc.FindWord(txtTuKhoa.Text))
+                            if (doc.FindWord(txtTuKhoa.Text) || file.Name.ToLower().Contains(txtTuKhoa.Text))
                             {
                                 lock (_lstResult)
                                 {
@@ -77,6 +77,11 @@ namespace QuanLyDoi.Forms.TimKiem
                 btnTimKiem.Text = "Dừng";
                 _lstResult = new List<FileInfo>();
                 findBackgroundWorker.RunWorkerAsync();
+                //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
+            }
+            else
+            {
+                findBackgroundWorker.CancelAsync();
             }
         }
 
@@ -96,7 +101,8 @@ namespace QuanLyDoi.Forms.TimKiem
 
         private void findBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            TimKiemThuMuc(new DirectoryInfo(txtThuMuc.Text));
+            foreach (var path in txtThuMuc.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
+                TimKiemThuMuc(new DirectoryInfo(path?.Trim()));
         }
 
         private void findBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

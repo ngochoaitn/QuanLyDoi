@@ -46,5 +46,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         {
             return !(ngay.DayOfWeek == DayOfWeek.Sunday || ngay.DayOfWeek == DayOfWeek.Saturday || NgayLoaiBo.Contains(ngay.Day));
         }
+
+        public List<int> this[int index] => DanhSachKetQua[index];
     }
 }

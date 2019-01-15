@@ -63,5 +63,17 @@ namespace QuanLyDoi.Lib
 
             return obj;
         }
+
+        public static T GetRandomElement<T>(this List<T> list)
+        {
+            Random ran = new Random();
+            return list.ElementAt(ran.Next(0, list.Count));
+        }
+
+        public static T GetRandomElement<T>(this List<T> list, int max_position)
+        {
+            Random ran = new Random();
+            return list.ElementAt(ran.Next(0, max_position));
+        }
     }
 }

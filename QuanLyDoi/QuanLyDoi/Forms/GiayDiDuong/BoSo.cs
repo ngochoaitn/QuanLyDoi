@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
-    public class BoSo : List<int>
+    public class BoSo
     {
         List<int> _maxVal, _res;
         public List<List<int>> DanhSachKetQua { get; set; }
@@ -52,8 +53,8 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 if (Validate?.Invoke(_res) ?? true)
                 {
                     //Tạo đủ 4 số
-                    //Debug.WriteLine(string.Join(" ", _res));
-                    DanhSachKetQua.Add(_res);
+                    Debug.WriteLine($"{this.DanhSachKetQua.Count+1}: {string.Join(" ", _res)}");
+                    this.DanhSachKetQua.Add(_res.ToList());//Phải ToList để clone không thì khi _res thay đổi các giá trị cũng sẽ thay đổi theo
                 }
             }
         }

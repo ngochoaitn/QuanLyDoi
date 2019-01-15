@@ -115,7 +115,7 @@
             // 
             // txtThuMuc
             // 
-            this.txtThuMuc.EditValue = "D:\\";
+            this.txtThuMuc.EditValue = "D:\\;Y:\\;Z:\\";
             this.txtThuMuc.Location = new System.Drawing.Point(56, 12);
             this.txtThuMuc.Name = "txtThuMuc";
             this.txtThuMuc.Size = new System.Drawing.Size(631, 20);

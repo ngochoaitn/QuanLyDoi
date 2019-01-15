@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
     //Cuốc
-    class Cuoc
+    public class Cuoc
     {
         public int TuNgay { get; set; }
         public int DenNgay { get; set; }
