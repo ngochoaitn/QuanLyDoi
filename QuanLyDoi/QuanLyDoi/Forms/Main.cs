@@ -17,6 +17,25 @@ namespace QuanLyDoi.Forms
             InitializeComponent();
         }
 
+        public void ShowForm(Form frmCon)
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                if (child.Text == frmCon.Text)
+                {
+                    child.WindowState = FormWindowState.Normal;
+                    child.Focus();
+                    return;
+                }
+            }
+            try
+            {
+                frmCon.MdiParent = this;
+                frmCon.Show();
+            }
+            catch { }
+        }
+
         private async void Main_Load(object sender, EventArgs e)
         {
             await Global.LoadBangMaAsync(Global.DbBangMa);
@@ -24,28 +43,28 @@ namespace QuanLyDoi.Forms
 
         private void giayDiDuongBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            alertControl1.Show(this, "Caption", "Text");
-            new Forms.GiayDiDuong.frmNhapThongTinKhoiTao().ShowDialog();
+            alertControl1.Show(this, "Tiêu đề", "Nội dung");
+            new GiayDiDuong.frmNhapThongTinKhoiTao().ShowDialog();
         }
 
         private void timKiemTepBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new Forms.TimKiem.frmTimKiemFileWord().ShowDialog();
+            this.ShowForm(new TimKiem.frmTimKiemFileWord());
         }
 
         private void quanLyCongVanDenBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new Forms.CongVan.frmCongVanDen().ShowDialog();
+            this.ShowForm(new CongVan.frmCongVanDen());
         }
 
         private void btnQuanLyThongTinCanBo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new Forms.CanBo.DanhSachCanBo().ShowDialog();
+            this.ShowForm(new CanBo.DanhSachCanBo());
         }
 
         private void btnBaoCaoDinhKy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new Forms.CongVan.BaoCaoDinhKy().ShowDialog();
+            this.ShowForm(new CongVan.BaoCaoDinhKy());
         }
     }
 }

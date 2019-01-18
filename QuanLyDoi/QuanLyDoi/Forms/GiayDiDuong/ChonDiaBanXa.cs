@@ -25,5 +25,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         public bool CHON_XA_8 { set; get; }
         public string TEN_CAC_XA_DUOC_CHON { set; get; }
         public List<int> THU_TU_CHON_XA { private set; get; }
+        public string NGAY_LOAI_BO { get; set; }
+        public GiayDiDuong GiayDiDuong { get; set; }
     }
 }

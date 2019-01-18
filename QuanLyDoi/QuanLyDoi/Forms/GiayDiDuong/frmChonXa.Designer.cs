@@ -44,6 +44,7 @@
             this.rep_colID_CAN_BO = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.cANBOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colNGAY_LOAI_BO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colID_DIAN_XA_1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colID_DIAN_XA_2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -109,6 +110,7 @@
             this.txtNgayLoai.Size = new System.Drawing.Size(776, 20);
             this.txtNgayLoai.StyleController = this.layoutControl1;
             this.txtNgayLoai.TabIndex = 8;
+            this.txtNgayLoai.EditValueChanged += new System.EventHandler(this.txtNgayLoai_EditValueChanged);
             // 
             // txtNam
             // 
@@ -182,7 +184,8 @@
             this.colID_DIAN_XA_6,
             this.colID_DIAN_XA_7,
             this.colID_DIAN_XA_8,
-            this.colTEN_CAC_XA_DUOC_CHON});
+            this.colTEN_CAC_XA_DUOC_CHON,
+            this.colNGAY_LOAI_BO});
             this.bgrvChonXa.GridControl = this.chonDiaBanXaGridControl;
             this.bgrvChonXa.Name = "bgrvChonXa";
             this.bgrvChonXa.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.bgrvChonXa_CellValueChanging);
@@ -191,9 +194,10 @@
             // gridBand1
             // 
             this.gridBand1.Columns.Add(this.colID_CAN_BO);
+            this.gridBand1.Columns.Add(this.colNGAY_LOAI_BO);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 140;
+            this.gridBand1.Width = 215;
             // 
             // colID_CAN_BO
             // 
@@ -215,8 +219,8 @@
             this.rep_colID_CAN_BO.DisplayMember = "HoVaTen";
             this.rep_colID_CAN_BO.Name = "rep_colID_CAN_BO";
             this.rep_colID_CAN_BO.NullText = "";
+            this.rep_colID_CAN_BO.PopupView = this.repositoryItemSearchLookUpEdit1View;
             this.rep_colID_CAN_BO.ValueMember = "IdCanBo";
-            this.rep_colID_CAN_BO.View = this.repositoryItemSearchLookUpEdit1View;
             // 
             // cANBOBindingSource
             // 
@@ -228,6 +232,14 @@
             this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
             this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colNGAY_LOAI_BO
+            // 
+            this.colNGAY_LOAI_BO.Caption = "Ngày bỏ";
+            this.colNGAY_LOAI_BO.FieldName = "NGAY_LOAI_BO";
+            this.colNGAY_LOAI_BO.MinWidth = 55;
+            this.colNGAY_LOAI_BO.Name = "colNGAY_LOAI_BO";
+            this.colNGAY_LOAI_BO.Visible = true;
             // 
             // gridBand2
             // 
@@ -242,7 +254,7 @@
             this.gridBand2.Columns.Add(this.colID_DIAN_XA_8);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 80;
+            this.gridBand2.Width = 75;
             // 
             // colID_DIAN_XA_1
             // 
@@ -329,7 +341,6 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.emptySpaceItem2});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.layoutControlGroup1.Size = new System.Drawing.Size(865, 376);
@@ -406,7 +417,7 @@
             this.ClientSize = new System.Drawing.Size(865, 376);
             this.Controls.Add(this.layoutControl1);
             this.Name = "frmChonXa";
-            this.Text = "frmChonXa";
+            this.Text = "Tạo giấy đi đường";
             this.Load += new System.EventHandler(this.frmChonXa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -451,9 +462,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colID_DIAN_XA_8;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colTEN_CAC_XA_DUOC_CHON;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit rep_colID_CAN_BO;
         private System.Windows.Forms.BindingSource cANBOBindingSource;
@@ -468,5 +476,9 @@
         private DevExpress.XtraEditors.TextEdit txtNgayLoai;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colNGAY_LOAI_BO;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }

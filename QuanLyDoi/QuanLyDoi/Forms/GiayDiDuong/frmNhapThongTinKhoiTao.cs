@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using QuanLyDoi.Database;
-using System.Data.Entity;
+﻿using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
+using QuanLyDoi.Database;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
@@ -59,22 +53,10 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            //foreach(var l in groupCheckXa.Items)
-            //{
-            //    if(l is LayoutControlItem)
-            //    {
-            //        if ((l as LayoutControlItem).Control is CheckEdit)
-            //        {
-            //            var check = (l as LayoutControlItem).Control as CheckEdit;
-            //            if (check.Checked)
-            //                cacXaDuocChon.Add(Convert.ToInt32(check.Tag));
-            //        }
-            //    }
-            //}
             int thang = Convert.ToInt32(txtThang.Text);
             int nam = Convert.ToInt32(txtNam.Text);
-
-            new frmChonXa(thang, nam, cacXaDuocChon).Show();
+            Global.Main.ShowForm(new frmChonXa(thang, nam, cacXaDuocChon));
+            this.Close();
         }
     }
 }

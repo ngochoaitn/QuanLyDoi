@@ -40,9 +40,9 @@ namespace QuanLyDoi.Forms.CanBo
 
         private async void DanhSachCanBo_Load(object sender, EventArgs e)
         {
-            CustomizeGridview.SetColumnSTT(grvCanBo);
-            CustomizeGridview.SetColumnXoa(grvCanBo, XoaCanBo);
-            CustomizeGridview.SetGridViewAppearance(grvCanBo, HangThemMoi: false);
+            grvCanBo.AddRowNumber()
+                .AddDeleteRowButton(XoaCanBo)
+                .SetGridViewAppearance();
             BindingBangMa();
             await LoadAndBindingAsync();
         }

@@ -139,8 +139,9 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\Extention.cs" />
-    <Compile Include="Lib\Global.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Forms\GiayDiDuong\BoSo.cs" />
+    <Compile Include="Lib\ThaoTacNhanh.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\DatabaseHelper.cs" />

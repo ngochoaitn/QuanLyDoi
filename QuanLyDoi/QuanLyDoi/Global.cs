@@ -1,16 +1,13 @@
 ﻿using QuanLyDoi.Database;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanLyDoi.Lib
+namespace QuanLyDoi
 {
     public class Global
     {
         public static QuanLyDoiModel DbBangMa { set; get; }
+        public static Forms.Main Main { get; set; }
 
         static Global()
         {

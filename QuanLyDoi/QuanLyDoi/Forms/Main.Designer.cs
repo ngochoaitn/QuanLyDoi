@@ -35,12 +35,14 @@
             this.timKiemTepBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.quanLyCongVanDenBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.btnQuanLyThongTinCanBo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBaoCaoDinhKy = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.btnBaoCaoDinhKy = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -97,6 +99,15 @@
             this.btnQuanLyThongTinCanBo.Name = "btnQuanLyThongTinCanBo";
             this.btnQuanLyThongTinCanBo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQuanLyThongTinCanBo_ItemClick);
             // 
+            // btnBaoCaoDinhKy
+            // 
+            this.btnBaoCaoDinhKy.Caption = "Danh sách báo cáo định kỳ";
+            this.btnBaoCaoDinhKy.Id = 6;
+            this.btnBaoCaoDinhKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoDinhKy.ImageOptions.Image")));
+            this.btnBaoCaoDinhKy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoDinhKy.ImageOptions.LargeImage")));
+            this.btnBaoCaoDinhKy.Name = "btnBaoCaoDinhKy";
+            this.btnBaoCaoDinhKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoDinhKy_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -120,14 +131,11 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tiện ích";
             // 
-            // btnBaoCaoDinhKy
+            // xtraTabbedMdiManager1
             // 
-            this.btnBaoCaoDinhKy.Caption = "Danh sách báo cáo định kỳ";
-            this.btnBaoCaoDinhKy.Id = 6;
-            this.btnBaoCaoDinhKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnBaoCaoDinhKy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnBaoCaoDinhKy.Name = "btnBaoCaoDinhKy";
-            this.btnBaoCaoDinhKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoDinhKy_ItemClick);
+            this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InActiveTabPageHeaderAndOnMouseHover;
+            this.xtraTabbedMdiManager1.MdiParent = this;
+            this.xtraTabbedMdiManager1.UseFormIconAsPageImage = DevExpress.Utils.DefaultBoolean.True;
             // 
             // Main
             // 
@@ -136,11 +144,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 360);
             this.Controls.Add(this.ribbonControl1);
+            this.IsMdiContainer = true;
             this.Name = "Main";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "Quản lý đội";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +169,7 @@
         private DevExpress.XtraBars.BarButtonItem btnQuanLyThongTinCanBo;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem btnBaoCaoDinhKy;
+        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
     }
 }
 

@@ -23,7 +23,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         public BoSo(NhomNgay nhom_ngay, Func<List<int>, bool> validate = null)
         {
             _maxVal = new List<int>();
-            foreach (var nn in nhom_ngay.DanhSachKetQua)
+            foreach (var nn in nhom_ngay.DanhSachNhomNgay)
                 _maxVal.Add(nn.Count);
             _res = new List<int>(_maxVal);
             DanhSachKetQua = new List<List<int>>();
@@ -53,7 +53,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 if (Validate?.Invoke(_res) ?? true)
                 {
                     //Tạo đủ 4 số
-                    Debug.WriteLine($"{this.DanhSachKetQua.Count+1}: {string.Join(" ", _res)}");
+                    //Debug.WriteLine($"{this.DanhSachKetQua.Count+1}: {string.Join(" ", _res)}");
                     this.DanhSachKetQua.Add(_res.ToList());//Phải ToList để clone không thì khi _res thay đổi các giá trị cũng sẽ thay đổi theo
                 }
             }

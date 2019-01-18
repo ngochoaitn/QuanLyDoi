@@ -108,7 +108,6 @@
             this.simpleSeparator1,
             this.layoutControlItem3,
             this.emptySpaceItem1});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.layoutControlGroup1.Size = new System.Drawing.Size(326, 439);
@@ -183,6 +182,7 @@
             this.ClientSize = new System.Drawing.Size(326, 439);
             this.Controls.Add(this.layoutControl1);
             this.Name = "frmNhapThongTinKhoiTao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thông tin khởi tạo";
             this.Load += new System.EventHandler(this.frmNhapThongTinKhoiTao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

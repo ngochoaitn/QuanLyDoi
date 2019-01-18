@@ -10,7 +10,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
     {
         public int Thang { get; set; }
         public int Nam { get; set; }
-        public List<List<int>> DanhSachKetQua { get; set; }
+        public List<List<int>> DanhSachNhomNgay { get; set; }
         public List<int> NgayLoaiBo { get; set; }
 
         public NhomNgay(int thang, int nam, List<int> ngay_loai_bo = null)
@@ -23,23 +23,23 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 
         public List<List<int>> TienhanhTao()
         {
-            this.DanhSachKetQua = new List<List<int>>();
+            this.DanhSachNhomNgay = new List<List<int>>();
 
             DateTime ngayDauThang = new DateTime(Nam, Thang, 1);
             DateTime ngayHienTai = ngayDauThang;
-            DanhSachKetQua.Add(new List<int>());
+            DanhSachNhomNgay.Add(new List<int>());
             while (ngayHienTai.Month == this.Thang)
             {
                 if(Validate(ngayHienTai))
-                    DanhSachKetQua.Last().Add(ngayHienTai.Day);
+                    DanhSachNhomNgay.Last().Add(ngayHienTai.Day);
                 else
-                    DanhSachKetQua.Add(new List<int>());
+                    DanhSachNhomNgay.Add(new List<int>());
                 ngayHienTai = ngayHienTai.AddDays(1);
             }
 
-            DanhSachKetQua = DanhSachKetQua.Where(p => p.Count != 0).ToList();
+            DanhSachNhomNgay = DanhSachNhomNgay.Where(p => p.Count != 0).ToList();
 
-            return DanhSachKetQua;
+            return DanhSachNhomNgay;
         }
 
         private bool Validate(DateTime ngay)
@@ -47,6 +47,6 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             return !(ngay.DayOfWeek == DayOfWeek.Sunday || ngay.DayOfWeek == DayOfWeek.Saturday || NgayLoaiBo.Contains(ngay.Day));
         }
 
-        public List<int> this[int index] => DanhSachKetQua[index];
+        public List<int> this[int index] => DanhSachNhomNgay[index];
     }
 }

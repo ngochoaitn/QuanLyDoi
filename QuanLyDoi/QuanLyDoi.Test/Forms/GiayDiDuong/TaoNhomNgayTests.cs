@@ -17,7 +17,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong.Tests
 
             NhomNgay taoNhom = new NhomNgay(1, 2019, null);
             taoNhom.TienhanhTao();
-            Assert.IsTrue(taoNhom.DanhSachKetQua.Count != 0);
+            Assert.IsTrue(taoNhom.DanhSachNhomNgay.Count != 0);
         }
 
         [TestMethod()]
@@ -26,7 +26,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong.Tests
 
             NhomNgay taoNhom = new NhomNgay(1, 2019, new List<int>() { 1, 2});
             taoNhom.TienhanhTao();
-            Assert.IsTrue(taoNhom.DanhSachKetQua.Count != 0);
+            Assert.IsTrue(taoNhom.DanhSachNhomNgay.Count != 0);
         }
 
         [TestMethod()]
@@ -35,7 +35,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong.Tests
 
             NhomNgay taoNhom = new NhomNgay(1, 2019, new List<int>() { 1, 2, 16 });
             taoNhom.TienhanhTao();
-            Assert.IsTrue(taoNhom.DanhSachKetQua.Count != 0);
+            Assert.IsTrue(taoNhom.DanhSachNhomNgay.Count != 0);
         }
     }
 }

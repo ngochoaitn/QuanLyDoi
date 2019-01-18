@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 
 namespace QuanLyDoi.Lib
 {
-    class CustomizeGridview
+    static class CustomizeGridview
     {
         /// <summary>
         /// Đặt các giá trị cho grid view như màu select, odd, focus, no border ...
         /// CustomizeGridview.SetGridViewAppearance(gridView1);
         /// </summary>
         /// <param name="gridView1"></param>
-        public static void SetGridViewAppearance(GridView gridView1, bool phanbietmaucachang=true, bool ChieuCaoHang = true, 
-            bool HangThemMoi = true, bool HangThemMoiODau = true)
+        public static GridView SetGridViewAppearance(this GridView gridView1, bool phanbietmaucachang=true, bool ChieuCaoHang = true, 
+            bool HangThemMoi = false, bool HangThemMoiODau = false)
         {
             gridView1.RowHeight = 24;
             gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -76,10 +76,14 @@ namespace QuanLyDoi.Lib
                 gridView1.CalcRowHeight += gridView1_CalcRowHeight;
 
             gridView1.OptionsPrint.AutoWidth = false;
+            return gridView1;
         }
 
-        public static void SetGridViewAppearance(BandedGridView gridView1, bool phanbietmaucachang = true, bool ChieuCaoHang = true)
+        public static BandedGridView SetGridViewAppearance(this BandedGridView gridView1, bool phanbietmaucachang = true, bool ChieuCaoHang = true)
         {
+            gridView1.Appearance.BandPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            gridView1.Appearance.BandPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+
             gridView1.RowHeight = 24;
             gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             gridView1.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.Azure;
@@ -118,6 +122,7 @@ namespace QuanLyDoi.Lib
             gridView1.Appearance.HeaderPanel.Options.UseFont = true;
 
             gridView1.FocusedRowChanged += gridView1_FocusedRowChanged;
+            return gridView1;
         }
 
         static void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -247,7 +252,7 @@ namespace QuanLyDoi.Lib
         /// Thêm trường STT cho gridview
         /// </summary>
         /// <param name="gridview1"></param>
-        public static void SetColumnSTT(GridView gridview1, int minwidth=45, int maxwidth=55, bool fixedleft=false)
+        public static GridView AddRowNumber(this GridView gridview1, int minwidth=45, int maxwidth=55, bool fixedleft=false)
         {
             DevExpress.XtraGrid.Columns.GridColumn colSTT_nvn = new DevExpress.XtraGrid.Columns.GridColumn();
             colSTT_nvn.AppearanceHeader.Options.UseFont = true;
@@ -286,9 +291,10 @@ namespace QuanLyDoi.Lib
             if (fixedleft)
                 colSTT_nvn.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             colSTT_nvn.VisibleIndex = 0;
+            return gridview1;
         }
         
-        public static void SetColumnSTT(BandedGridView gridview1, int minwidth = 45, int maxwidth = 55)
+        public static BandedGridView AddRowNumber(this BandedGridView gridview1, int minwidth = 45, int maxwidth = 55)
         {
             BandedGridColumn colSTT_nvn = new BandedGridColumn();
             colSTT_nvn.AppearanceHeader.Options.UseFont = true;
@@ -324,9 +330,10 @@ namespace QuanLyDoi.Lib
                 }
             };
             colSTT_nvn.VisibleIndex = 0;
+            return gridview1;
         }
 
-        public static void SetColumnXoa(GridView grv, EventHandler action_xoa)
+        public static GridView AddDeleteRowButton(this GridView grv, EventHandler action_xoa)
         {
             RepositoryItemHyperLinkEdit rep_colXoa = new RepositoryItemHyperLinkEdit();
             rep_colXoa.AutoHeight = false;
@@ -347,6 +354,32 @@ namespace QuanLyDoi.Lib
             colXoa.Width = 35;
 
             grv.Columns.Add(colXoa);
+            return grv;
+        }
+
+        public static GridView AddcolumnWithHyperLink(this GridView grv, string header_text, string display_text, EventHandler action_click, int min_width=55, int max_width=65)
+        {
+            RepositoryItemHyperLinkEdit rep_colHyperLink = new RepositoryItemHyperLinkEdit();
+            rep_colHyperLink.AutoHeight = false;
+            rep_colHyperLink.Name = $"rep_colHyperLink{grv.Columns.Count}";
+            rep_colHyperLink.NullText = display_text;
+            rep_colHyperLink.Click += action_click;
+
+            GridColumn colHyperLink = new GridColumn();
+            colHyperLink.Caption = header_text;
+            colHyperLink.AppearanceCell.Options.UseTextOptions = true;
+            colHyperLink.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            colHyperLink.ColumnEdit = rep_colHyperLink;
+            colHyperLink.Fixed = FixedStyle.Right;
+            colHyperLink.MaxWidth = min_width;
+            colHyperLink.MinWidth = max_width;
+            colHyperLink.Name = $"colcolHyperLink{grv.Columns.Count}";
+            colHyperLink.Visible = true;
+            colHyperLink.VisibleIndex = grv.Columns.Count;
+            colHyperLink.Width = 35;
+
+            grv.Columns.Add(colHyperLink);
+            return grv;
         }
     }
 }

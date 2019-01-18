@@ -10,16 +10,15 @@ namespace QuanLyDoi.Forms.GiayDiDuong
 {
     public class TaoGiayDiDuong
     {
-        Dictionary<MA_DIA_BAN_XA, Dictionary<int, int>> _demDiDiaBan;// = new Dictionary<MA_DIA_BAN_XA, Dictionary<int, int>>();//Xã nào, ngày nào đến bao nhiêu người => để chọn ngày có ít người đến nhất
-
+        public Dictionary<MA_DIA_BAN_XA, Dictionary<int, List<CAN_BO>>> ThongKeDiaBanXa { set; get; }// = new Dictionary<MA_DIA_BAN_XA, Dictionary<int, int>>();//Xã nào, ngày nào đến bao nhiêu người => để chọn ngày có ít người đến nhất
         public TaoGiayDiDuong(List<MA_DIA_BAN_XA> danh_sach_cac_xa)
         {
-            _demDiDiaBan = new Dictionary<MA_DIA_BAN_XA, Dictionary<int, int>>();
+            ThongKeDiaBanXa = new Dictionary<MA_DIA_BAN_XA, Dictionary<int, List<CAN_BO>>>();
             foreach (var xa in danh_sach_cac_xa)
             {
-                _demDiDiaBan.Add(xa, new Dictionary<int, int>());
+                ThongKeDiaBanXa.Add(xa, new Dictionary<int, List<CAN_BO>>());
                 for (int n = 1; n <= 31; n++)
-                    _demDiDiaBan[xa].Add(n, 0);
+                    ThongKeDiaBanXa[xa].Add(n, new List<CAN_BO>());
             }
         }
 
@@ -36,23 +35,24 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 int soNgayCanLay = boSo[i];
                 if (soNgayCanLay != 0)
                 {
+                    if (giay.Cuocs.Count == 0 || giay.Cuocs.Count <= cuocHienTai)
+                        break;
+
                     Cuoc cuoc = giay.Cuocs[cuocHienTai];
                     //Chọn ngày
-                    List<int> danhSachNgay = nhom_ngay[i];
+                    List<int> danhSachNgay = nhom_ngay[i];//Lấy nhóm ngày
                     if (soNgayCanLay < danhSachNgay.Count)
                     {
                         //Chọn ngày có lượt đến xã này ít nhất
-                        int indexNgay = 0, luongNguoiDenItNhat = _demDiDiaBan[cuoc.Xa][danhSachNgay[0]];
-                        for (int t = 1; t <= danhSachNgay.Count - soNgayCanLay; t++)
+                        int indexNgay = 0, luongNguoiDenItNhat = ThongKeDiaBanXa[cuoc.Xa][danhSachNgay[0]].Count;
+                        for (int t = danhSachNgay.Count - soNgayCanLay; t >= 1; t--)
                         {
-                            if (luongNguoiDenItNhat > _demDiDiaBan[cuoc.Xa][danhSachNgay[t]])
+                            if (luongNguoiDenItNhat > ThongKeDiaBanXa[cuoc.Xa][danhSachNgay[t]].Count)
                             {
                                 indexNgay = t;
-                                luongNguoiDenItNhat = _demDiDiaBan[cuoc.Xa][danhSachNgay[t]];
+                                luongNguoiDenItNhat = ThongKeDiaBanXa[cuoc.Xa][danhSachNgay[t]].Count;
                             }
                         }
-
-                        //index_ran = new Random().Next(0, danhSachNgay.Count - soNgayCanLay + 1);
 
                         cuoc.TuNgay = danhSachNgay[indexNgay];
                         cuoc.DenNgay = danhSachNgay[indexNgay + soNgayCanLay - 1];
@@ -63,7 +63,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                         cuoc.DenNgay = danhSachNgay.Last();
                     }
                     for (int n = cuoc.TuNgay; n <= cuoc.DenNgay; n++)
-                        _demDiDiaBan[cuoc.Xa][n]++;
+                        ThongKeDiaBanXa[cuoc.Xa][n].Add(giay.CanBo);
                     cuocHienTai++;
                 }
             }

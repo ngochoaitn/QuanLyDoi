@@ -13,6 +13,5 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         public int TuNgay { get; set; }
         public int DenNgay { get; set; }
         public MA_DIA_BAN_XA Xa { get; set; }
-        public CAN_BO CanBo { get; set; }
     }
 }

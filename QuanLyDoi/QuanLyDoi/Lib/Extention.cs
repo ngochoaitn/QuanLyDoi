@@ -75,5 +75,17 @@ namespace QuanLyDoi.Lib
             Random ran = new Random();
             return list.ElementAt(ran.Next(0, max_position));
         }
+
+        public static int? TryConvertToInt32(this string s)
+        {
+            try
+            {
+                return Convert.ToInt32(s);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
