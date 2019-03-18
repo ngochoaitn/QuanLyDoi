@@ -35,5 +35,10 @@ namespace QuanLyDoi.Database
         {
             return Sequence_Int("SEQ_BAO_CAO_DINH_KY_NGAY_BAO_CAO", _dbStatic);
         }
+
+        internal static int CONG_VAN()
+        {
+            return Sequence_Int("SEQ_CONG_VAN", _dbStatic);
+        }
     }
 }

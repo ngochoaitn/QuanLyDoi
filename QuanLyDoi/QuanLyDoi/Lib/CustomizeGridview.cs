@@ -122,6 +122,7 @@ namespace QuanLyDoi.Lib
             gridView1.Appearance.HeaderPanel.Options.UseFont = true;
 
             gridView1.FocusedRowChanged += gridView1_FocusedRowChanged;
+
             return gridView1;
         }
 

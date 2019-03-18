@@ -6,10 +6,10 @@ namespace QuanLyDoi.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class MA_CAP_BAC
+    public partial class MA_DOI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MA_CAP_BAC()
+        public MA_DOI()
         {
             CAN_BO = new HashSet<CAN_BO>();
         }

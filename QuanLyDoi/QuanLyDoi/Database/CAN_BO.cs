@@ -50,5 +50,15 @@ namespace QuanLyDoi.Database
 
         [StringLength(50)]
         public string SoCMCA { get; set; }
+
+        public int? IdDoi { get; set; }
+
+        public virtual MA_CAP_BAC MA_CAP_BAC { get; set; }
+
+        public virtual MA_CHUC_VU MA_CHUC_VU { get; set; }
+
+        public virtual MA_DOI MA_DOI { get; set; }
+
+        public virtual TEP_TIN TEP_TIN { get; set; }
     }
 }

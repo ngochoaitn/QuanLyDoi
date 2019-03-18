@@ -9,11 +9,9 @@ namespace QuanLyDoi.Database
     public partial class MA_LOAI_CONG_VAN
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name ="Mã")]
         public int ID { get; set; }
 
         [StringLength(50)]
-        [Display(Name ="Loại công văn")]
         public string ND { get; set; }
     }
 }

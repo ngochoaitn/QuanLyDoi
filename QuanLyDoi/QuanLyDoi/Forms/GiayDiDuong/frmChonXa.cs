@@ -105,13 +105,24 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             _danhSachGiayDiDuong = new List<GIAY_DI_DUONG>();
             _thang = Convert.ToInt32(txtThang.Text);
             _nam = Convert.ToInt32(txtNam.Text);
-
+            string loi = "";
             foreach (ChonDiaBanXa chon in chonDiaBanXaBindingSource)
             {
                 List<MA_DIA_BAN_XA> danhSachXaDuocChonCuaNguoiNay = this.LayDanhSachXa(chon.THU_TU_CHON_XA);
                 NhomNgay nhomNgay = new NhomNgay(_thang, _nam, this.LayNgayLoaiBo(chon.NGAY_LOAI_BO));
                 chon.GiayDiDuong = new GiayDiDuong(await _db.CAN_BO.FirstAsync(p => p.IdCanBo == chon.ID_CAN_BO), danhSachXaDuocChonCuaNguoiNay);
-                taoGiayDiDuong.DienThongTin(chon.GiayDiDuong, nhomNgay);
+                try
+                {
+                    taoGiayDiDuong.DienThongTin(chon.GiayDiDuong, nhomNgay);
+                }
+                catch
+                {
+                    loi += $"{chon?.GiayDiDuong?.CanBo?.HoVaTen} không điền được thông tin\r\n";
+                }
+            }
+            if(loi != "")
+            {
+                ThongBao.BaoLoi(loi);
             }
         }
 

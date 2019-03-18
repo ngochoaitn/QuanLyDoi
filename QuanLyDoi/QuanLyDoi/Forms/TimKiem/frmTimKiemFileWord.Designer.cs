@@ -171,6 +171,7 @@
             this.grvFileInfo.GridControl = this.fileInfoGridControl;
             this.grvFileInfo.Name = "grvFileInfo";
             this.grvFileInfo.OptionsBehavior.Editable = false;
+            this.grvFileInfo.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grvFileInfo.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.grvFileInfo.DoubleClick += new System.EventHandler(this.grvFileInfo_DoubleClick);
             // 
@@ -374,6 +375,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 418);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTimKiemFileWord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tìm kiếm nội dung tệp văn bản";

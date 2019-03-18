@@ -8,6 +8,12 @@ namespace QuanLyDoi.Database
 
     public partial class TEP_TIN
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TEP_TIN()
+        {
+            CAN_BO = new HashSet<CAN_BO>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
@@ -16,5 +22,8 @@ namespace QuanLyDoi.Database
 
         [Column(TypeName = "image")]
         public byte[] NoiDungTep { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CAN_BO> CAN_BO { get; set; }
     }
 }

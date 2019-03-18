@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DanhSachCanBo));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnThemCanBo = new DevExpress.XtraEditors.SimpleButton();
             this.picAnhDaiDien = new DevExpress.XtraEditors.PictureEdit();
@@ -53,6 +54,12 @@
             this.cAN_BOGridControl = new DevExpress.XtraGrid.GridControl();
             this.grvCanBo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colHoVaTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdCapBac = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rep_colIdCapBac = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIdChucVu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rep_colIdChucVu = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -70,12 +77,6 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colIdCapBac = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIdChucVu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.rep_colIdCapBac = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.rep_colIdChucVu = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAnhDaiDien.Properties)).BeginInit();
@@ -102,6 +103,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.hoVaTenTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAN_BOGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvCanBo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdCapBac)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdChucVu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
@@ -119,10 +124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdCapBac)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdChucVu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -168,7 +169,6 @@
             this.picAnhDaiDien.Name = "picAnhDaiDien";
             this.picAnhDaiDien.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picAnhDaiDien.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.picAnhDaiDien.Properties.ZoomAccelerationFactor = 1D;
             this.picAnhDaiDien.Size = new System.Drawing.Size(103, 116);
             this.picAnhDaiDien.StyleController = this.layoutControl1;
             this.picAnhDaiDien.TabIndex = 19;
@@ -300,8 +300,8 @@
             this.idCapBacSearchLookUpEdit.Properties.DataSource = this.mACAPBACBindingSource;
             this.idCapBacSearchLookUpEdit.Properties.DisplayMember = "ND";
             this.idCapBacSearchLookUpEdit.Properties.NullText = "";
+            this.idCapBacSearchLookUpEdit.Properties.PopupView = this.idCapBacSearchLookUpEditView;
             this.idCapBacSearchLookUpEdit.Properties.ValueMember = "ID";
-            this.idCapBacSearchLookUpEdit.Properties.View = this.idCapBacSearchLookUpEditView;
             this.idCapBacSearchLookUpEdit.Size = new System.Drawing.Size(125, 20);
             this.idCapBacSearchLookUpEdit.StyleController = this.layoutControl1;
             this.idCapBacSearchLookUpEdit.TabIndex = 9;
@@ -327,8 +327,8 @@
             this.idChucVuSearchLookUpEdit.Properties.DataSource = this.mACHUCVUBindingSource;
             this.idChucVuSearchLookUpEdit.Properties.DisplayMember = "ND";
             this.idChucVuSearchLookUpEdit.Properties.NullText = "";
+            this.idChucVuSearchLookUpEdit.Properties.PopupView = this.idChucVuSearchLookUpEditView;
             this.idChucVuSearchLookUpEdit.Properties.ValueMember = "ID";
-            this.idChucVuSearchLookUpEdit.Properties.View = this.idChucVuSearchLookUpEditView;
             this.idChucVuSearchLookUpEdit.Size = new System.Drawing.Size(104, 20);
             this.idChucVuSearchLookUpEdit.StyleController = this.layoutControl1;
             this.idChucVuSearchLookUpEdit.TabIndex = 8;
@@ -401,6 +401,68 @@
             this.colHoVaTen.VisibleIndex = 0;
             this.colHoVaTen.Width = 100;
             // 
+            // colIdCapBac
+            // 
+            this.colIdCapBac.Caption = "Cấp bậc";
+            this.colIdCapBac.ColumnEdit = this.rep_colIdCapBac;
+            this.colIdCapBac.FieldName = "IdCapBac";
+            this.colIdCapBac.MaxWidth = 60;
+            this.colIdCapBac.MinWidth = 50;
+            this.colIdCapBac.Name = "colIdCapBac";
+            this.colIdCapBac.Visible = true;
+            this.colIdCapBac.VisibleIndex = 1;
+            this.colIdCapBac.Width = 60;
+            // 
+            // rep_colIdCapBac
+            // 
+            this.rep_colIdCapBac.AutoHeight = false;
+            this.rep_colIdCapBac.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rep_colIdCapBac.DataSource = this.mACAPBACBindingSource;
+            this.rep_colIdCapBac.DisplayMember = "ND";
+            this.rep_colIdCapBac.Name = "rep_colIdCapBac";
+            this.rep_colIdCapBac.NullText = "";
+            this.rep_colIdCapBac.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            this.rep_colIdCapBac.ValueMember = "ID";
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colIdChucVu
+            // 
+            this.colIdChucVu.Caption = "Chức vụ";
+            this.colIdChucVu.ColumnEdit = this.rep_colIdChucVu;
+            this.colIdChucVu.FieldName = "IdChucVu";
+            this.colIdChucVu.MaxWidth = 80;
+            this.colIdChucVu.MinWidth = 50;
+            this.colIdChucVu.Name = "colIdChucVu";
+            this.colIdChucVu.Visible = true;
+            this.colIdChucVu.VisibleIndex = 2;
+            this.colIdChucVu.Width = 60;
+            // 
+            // rep_colIdChucVu
+            // 
+            this.rep_colIdChucVu.AutoHeight = false;
+            this.rep_colIdChucVu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rep_colIdChucVu.DataSource = this.mACHUCVUBindingSource;
+            this.rep_colIdChucVu.DisplayMember = "ND";
+            this.rep_colIdChucVu.Name = "rep_colIdChucVu";
+            this.rep_colIdChucVu.NullText = "";
+            this.rep_colIdChucVu.PopupView = this.gridView1;
+            this.rep_colIdChucVu.ValueMember = "ID";
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -422,7 +484,6 @@
             this.layoutControlItem10,
             this.layoutControlItem13,
             this.layoutControlItem16});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.layoutControlGroup1.Size = new System.Drawing.Size(718, 365);
@@ -589,74 +650,13 @@
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
-            // colIdCapBac
-            // 
-            this.colIdCapBac.Caption = "Cấp bậc";
-            this.colIdCapBac.ColumnEdit = this.rep_colIdCapBac;
-            this.colIdCapBac.FieldName = "IdCapBac";
-            this.colIdCapBac.MaxWidth = 60;
-            this.colIdCapBac.MinWidth = 50;
-            this.colIdCapBac.Name = "colIdCapBac";
-            this.colIdCapBac.Visible = true;
-            this.colIdCapBac.VisibleIndex = 1;
-            this.colIdCapBac.Width = 60;
-            // 
-            // colIdChucVu
-            // 
-            this.colIdChucVu.Caption = "Chức vụ";
-            this.colIdChucVu.ColumnEdit = this.rep_colIdChucVu;
-            this.colIdChucVu.FieldName = "IdChucVu";
-            this.colIdChucVu.MaxWidth = 80;
-            this.colIdChucVu.MinWidth = 50;
-            this.colIdChucVu.Name = "colIdChucVu";
-            this.colIdChucVu.Visible = true;
-            this.colIdChucVu.VisibleIndex = 2;
-            this.colIdChucVu.Width = 60;
-            // 
-            // rep_colIdCapBac
-            // 
-            this.rep_colIdCapBac.AutoHeight = false;
-            this.rep_colIdCapBac.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rep_colIdCapBac.DataSource = this.mACAPBACBindingSource;
-            this.rep_colIdCapBac.DisplayMember = "ND";
-            this.rep_colIdCapBac.Name = "rep_colIdCapBac";
-            this.rep_colIdCapBac.NullText = "";
-            this.rep_colIdCapBac.ValueMember = "ID";
-            this.rep_colIdCapBac.View = this.repositoryItemSearchLookUpEdit1View;
-            // 
-            // repositoryItemSearchLookUpEdit1View
-            // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // rep_colIdChucVu
-            // 
-            this.rep_colIdChucVu.AutoHeight = false;
-            this.rep_colIdChucVu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rep_colIdChucVu.DataSource = this.mACHUCVUBindingSource;
-            this.rep_colIdChucVu.DisplayMember = "ND";
-            this.rep_colIdChucVu.Name = "rep_colIdChucVu";
-            this.rep_colIdChucVu.NullText = "";
-            this.rep_colIdChucVu.ValueMember = "ID";
-            this.rep_colIdChucVu.View = this.gridView1;
-            // 
-            // gridView1
-            // 
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
             // DanhSachCanBo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 365);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DanhSachCanBo";
             this.Text = "Danh sách cán bộ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DanhSachCanBo_FormClosing);
@@ -687,6 +687,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.hoVaTenTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAN_BOGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvCanBo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdCapBac)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdChucVu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
@@ -704,10 +708,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdCapBac)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rep_colIdChucVu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

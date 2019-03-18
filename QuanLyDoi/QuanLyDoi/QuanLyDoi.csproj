@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconfinder_file_manager_1252_HG8_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells, Version=7.2.1.0, Culture=neutral, PublicKeyToken=304f5aa34aff2288, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +83,17 @@
   <ItemGroup>
     <Compile Include="Database\BAO_CAO_DINH_KY.cs" />
     <Compile Include="Database\BAO_CAO_DINH_KY_NGAY_BAO_CAO.cs" />
+    <Compile Include="Database\CAN_BO.cs" />
+    <Compile Include="Database\CONG_VAN.cs" />
+    <Compile Include="Database\GIAY_DI_DUONG.cs" />
+    <Compile Include="Database\LOG.cs" />
+    <Compile Include="Database\MA_CAP_BAC.cs" />
+    <Compile Include="Database\MA_CHUC_VU.cs" />
+    <Compile Include="Database\MA_DIA_BAN_XA.cs" />
+    <Compile Include="Database\MA_DOI.cs" />
+    <Compile Include="Database\MA_LOAI_CONG_VAN.cs" />
+    <Compile Include="Database\QuanLyDoiModel.cs" />
+    <Compile Include="Database\TEP_TIN.cs" />
     <Compile Include="Forms\CongVan\BaoCaoDinhKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,16 +104,13 @@
     <Compile Include="Forms\GiayDiDuong\GiayDiDuong.cs" />
     <Compile Include="Forms\GiayDiDuong\NhomNgay.cs" />
     <Compile Include="Forms\GiayDiDuong\TaoGiayDiDuong.cs" />
+    <Compile Include="Forms\LamDep\WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LamDep\WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CustomizeGridview.cs" />
-    <Compile Include="Database\CAN_BO.cs" />
-    <Compile Include="Database\CONG_VAN.cs" />
-    <Compile Include="Database\GIAY_DI_DUONG.cs" />
-    <Compile Include="Database\MA_CAP_BAC.cs" />
-    <Compile Include="Database\MA_CHUC_VU.cs" />
-    <Compile Include="Database\MA_DIA_BAN_XA.cs" />
-    <Compile Include="Database\MA_LOAI_CONG_VAN.cs" />
-    <Compile Include="Database\QuanLyDoiModel.cs" />
-    <Compile Include="Database\TEP_TIN.cs" />
     <Compile Include="Forms\CanBo\DanhSachCanBo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +153,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Forms\GiayDiDuong\BoSo.cs" />
     <Compile Include="Lib\ThaoTacNhanh.cs" />
+    <Compile Include="Lib\ThongBao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\DatabaseHelper.cs" />
@@ -162,6 +174,9 @@
     <EmbeddedResource Include="Forms\GiayDiDuong\frmNhapThongTinKhoiTao.resx">
       <DependentUpon>frmNhapThongTinKhoiTao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LamDep\WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimKiem\frmTimKiemFileWord.resx">
       <DependentUpon>frmTimKiemFileWord.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,7 +195,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
-    <None Include="Database\dbQuanLyDoi.rar" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.BAO_CAO_DINH_KY.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.BAO_CAO_DINH_KY_NGAY_BAO_CAO.datasource" />
@@ -205,6 +219,9 @@
     <None Include="Reports\KeHoachMau.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="iconfinder_file_manager_1252_HG8_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

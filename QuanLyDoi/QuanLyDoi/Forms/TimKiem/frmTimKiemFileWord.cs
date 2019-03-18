@@ -27,6 +27,8 @@ namespace QuanLyDoi.Forms.TimKiem
 
         private void TimKiemThuMuc(DirectoryInfo dir)
         {
+            if (!dir.Exists)
+                return;
             //Debug.WriteLine($"Tìm thư mục {dir.FullName}");
             lblTrangThai.ChangeTextAsync($"Tìm thư mục {dir.FullName}", Color.Blue);
             try
@@ -72,12 +74,13 @@ namespace QuanLyDoi.Forms.TimKiem
         {
             //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
             //TimKiemThuMuc(new DirectoryInfo(txtThuMuc.Text));
-            if (btnTimKiem.Text == "Tìm kiếm")
+            if (btnTimKiem.Text == "Tìm")
             {
                 btnTimKiem.Text = "Dừng";
                 _lstResult = new List<FileInfo>();
                 findBackgroundWorker.RunWorkerAsync();
                 //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
+                lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn thất", Color.Blue);
             }
             else
             {
