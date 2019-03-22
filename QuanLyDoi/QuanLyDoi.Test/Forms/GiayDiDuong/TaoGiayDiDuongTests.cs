@@ -18,10 +18,10 @@ namespace QuanLyDoi.Forms.GiayDiDuong.Tests
         {
             List<MA_DIA_BAN_XA> lstXa = new List<MA_DIA_BAN_XA>()
             {
-                new MA_DIA_BAN_XA(){ID = 1, ND = "Cốc Đán"},
-                new MA_DIA_BAN_XA(){ID = 2, ND = "Thượng Ân"},
-                new MA_DIA_BAN_XA(){ID = 3, ND = "Hương Nê"},
-                new MA_DIA_BAN_XA(){ID = 4, ND = "Lãng Ngâm"}
+                new MA_DIA_BAN_XA(){ID = "CD", ND = "Cốc Đán"},
+                new MA_DIA_BAN_XA(){ID = "TA", ND = "Thượng Ân"},
+                new MA_DIA_BAN_XA(){ID = "HN", ND = "Hương Nê"},
+                new MA_DIA_BAN_XA(){ID = "LN", ND = "Lãng Ngâm"}
             };
 
             TaoGiayDiDuong taoGiayDiDuong = new TaoGiayDiDuong(lstXa);

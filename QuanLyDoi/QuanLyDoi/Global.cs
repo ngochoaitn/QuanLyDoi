@@ -20,6 +20,11 @@ namespace QuanLyDoi
             await db.MA_CAP_BAC.LoadAsync();
             await db.MA_DIA_BAN_XA.LoadAsync();
             await db.MA_LOAI_CONG_VAN.LoadAsync();
+            await db.MA_DIA_BAN_XA.LoadAsync();
+            await db.MA_DIA_BAN_THON.LoadAsync();
+            await db.MA_DOI.LoadAsync();
+            await db.MA_LOAI_CONG_VAN.LoadAsync();
+            await db.MA_DAN_TOC.LoadAsync();
         }
     }
 }

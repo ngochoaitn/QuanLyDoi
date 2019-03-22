@@ -40,5 +40,15 @@ namespace QuanLyDoi.Database
         {
             return Sequence_Int("SEQ_CONG_VAN", _dbStatic);
         }
+
+        internal static int NGUOI()
+        {
+            return Sequence_Int("SEQ_NGUOI", _dbStatic);
+        }
+
+        internal static int XUAT_CANH_TRAI_PHEP()
+        {
+            return Sequence_Int("SEQ_XUAT_CANH_TRAI_PHEP", _dbStatic);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
     {
         public ChonDiaBanXa()
         {
-            this.THU_TU_CHON_XA = new List<int>();
+            this.THU_TU_CHON_XA = new List<string>();
             CHON_XA_1 = CHON_XA_2 = CHON_XA_3 = CHON_XA_4 = CHON_XA_5 = CHON_XA_6 = CHON_XA_7 = CHON_XA_8 = false;
         }
         public int ID_CAN_BO { set; get; }
@@ -24,7 +24,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         public bool CHON_XA_7 { set; get; }
         public bool CHON_XA_8 { set; get; }
         public string TEN_CAC_XA_DUOC_CHON { set; get; }
-        public List<int> THU_TU_CHON_XA { private set; get; }
+        public List<string> THU_TU_CHON_XA { private set; get; }
         public string NGAY_LOAI_BO { get; set; }
         public GiayDiDuong GiayDiDuong { get; set; }
     }

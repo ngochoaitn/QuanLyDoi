@@ -66,5 +66,15 @@ namespace QuanLyDoi.Forms
         {
             this.ShowForm(new CongVan.BaoCaoDinhKy());
         }
+
+        private void btnDanhSachXuatCanhTraiPhep_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.ShowForm(new XuatCanhTraiPhep.FormDanhSachXuatCanhTraiPhep());
+        }
+
+        private void btnThongKeXuatCanhTraiPhep_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.ShowForm(new XuatCanhTraiPhep.FormThongKeXuatCanhTraiPhep());
+        }
     }
 }

@@ -48,6 +48,7 @@
       <HintPath>..\Dll\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v18.1" />
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v18.1" />
     <Reference Include="DevExpress.Office.v18.1.Core" />
     <Reference Include="DevExpress.RichEdit.v18.1.Core" />
@@ -56,6 +57,9 @@
     <Reference Include="DevExpress.Utils.v18.1" />
     <Reference Include="DevExpress.XtraBars.v18.1" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.UI, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Wizard, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v18.1" />
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -89,11 +93,15 @@
     <Compile Include="Database\LOG.cs" />
     <Compile Include="Database\MA_CAP_BAC.cs" />
     <Compile Include="Database\MA_CHUC_VU.cs" />
+    <Compile Include="Database\MA_DAN_TOC.cs" />
+    <Compile Include="Database\MA_DIA_BAN_THON.cs" />
     <Compile Include="Database\MA_DIA_BAN_XA.cs" />
     <Compile Include="Database\MA_DOI.cs" />
     <Compile Include="Database\MA_LOAI_CONG_VAN.cs" />
+    <Compile Include="Database\NGUOI.cs" />
     <Compile Include="Database\QuanLyDoiModel.cs" />
     <Compile Include="Database\TEP_TIN.cs" />
+    <Compile Include="Database\XUAT_CANH_TRAI_PHEP.cs" />
     <Compile Include="Forms\CongVan\BaoCaoDinhKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +117,24 @@
     </Compile>
     <Compile Include="Forms\LamDep\WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormDanhSachXuatCanhTraiPhep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormDanhSachXuatCanhTraiPhep.Designer.cs">
+      <DependentUpon>FormDanhSachXuatCanhTraiPhep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormThongKeXuatCanhTraiPhep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormThongKeXuatCanhTraiPhep.Designer.cs">
+      <DependentUpon>FormThongKeXuatCanhTraiPhep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormXuatCanhTraiPhep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\XuatCanhTraiPhep\FormXuatCanhTraiPhep.Designer.cs">
+      <DependentUpon>FormXuatCanhTraiPhep.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\CustomizeGridview.cs" />
     <Compile Include="Forms\CanBo\DanhSachCanBo.cs">
@@ -183,6 +209,15 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XuatCanhTraiPhep\FormDanhSachXuatCanhTraiPhep.resx">
+      <DependentUpon>FormDanhSachXuatCanhTraiPhep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XuatCanhTraiPhep\FormThongKeXuatCanhTraiPhep.resx">
+      <DependentUpon>FormThongKeXuatCanhTraiPhep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XuatCanhTraiPhep\FormXuatCanhTraiPhep.resx">
+      <DependentUpon>FormXuatCanhTraiPhep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -201,11 +236,17 @@
     <None Include="Properties\DataSources\QuanLyDoi.Database.CAN_BO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.GIAY_DI_DUONG.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.LOG.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CAP_BAC.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CHUC_VU.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DAN_TOC.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DIA_BAN_THON.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DIA_BAN_XA.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.MA_DOI.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_LOAI_CONG_VAN.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.NGUOI.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.TEP_TIN.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.XUAT_CANH_TRAI_PHEP.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Forms.GiayDiDuong.ChonDiaBanXa.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

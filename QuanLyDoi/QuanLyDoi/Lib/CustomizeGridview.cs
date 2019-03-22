@@ -68,6 +68,8 @@ namespace QuanLyDoi.Lib
                 gridView1.NewItemRowText = "Click vào đây để thêm mới...";
                 if (HangThemMoiODau)
                     gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+                else
+                    gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
                 gridView1.Appearance.TopNewRow.BackColor= System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(200)))));
             }
 

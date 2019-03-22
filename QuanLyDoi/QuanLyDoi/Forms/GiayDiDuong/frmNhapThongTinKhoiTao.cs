@@ -11,7 +11,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
     public partial class frmNhapThongTinKhoiTao : DevExpress.XtraEditors.XtraForm
     {
         QuanLyDoiModel _db;
-        List<int> cacXaDuocChon = new List<int>();
+        List<string> cacXaDuocChon = new List<string>();
 
         public frmNhapThongTinKhoiTao()
         {
@@ -41,9 +41,9 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 check.CheckedChanged += (s1, e1) =>
                 {
                     if (check.Checked)
-                        cacXaDuocChon.Add(Convert.ToInt32(check.Tag));
+                        cacXaDuocChon.Add(check.Tag.ToString());
                     else
-                        cacXaDuocChon.RemoveAll(p => p == Convert.ToInt32(check.Tag));
+                        cacXaDuocChon.RemoveAll(p => p == check.Tag.ToString());
                 };
 
                 this.layoutControl1.Controls.Add(check);

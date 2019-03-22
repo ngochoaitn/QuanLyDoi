@@ -22,11 +22,11 @@ namespace QuanLyDoi.Forms.GiayDiDuong
     {
         QuanLyDoiModel _db;
         int _thang, _nam;
-        List<int> _cacXaCoDau;
+        List<string> _cacXaCoDau;
         List<MA_DIA_BAN_XA> _lstXa;
         TaoGiayDiDuong taoGiayDiDuong;
 
-        public frmChonXa(int thang, int nam, List<int> cac_xa_co_dau)
+        public frmChonXa(int thang, int nam, List<string> cac_xa_co_dau)
         {
             InitializeComponent();
 
@@ -53,14 +53,14 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 if (chon != null)
                 {
                     if ((bool)e.Value)
-                        chon.THU_TU_CHON_XA.Add(Convert.ToInt32(e.Column.Tag));
+                        chon.THU_TU_CHON_XA.Add(e.Column.Tag.ToString());
                     else
-                        chon.THU_TU_CHON_XA.RemoveAll(p => p == Convert.ToInt32(e.Column.Tag));
+                        chon.THU_TU_CHON_XA.RemoveAll(p => p == e.Column.Tag.ToString());
 
                     chon.TEN_CAC_XA_DUOC_CHON = "";//Vì cần theo thứ tự string.Join(";", _lstXa.Where(p => chon.THU_TU_CHON_XA.Contains(p.ID)).Select(p => p.ND));
 
-                    foreach (int i in chon.THU_TU_CHON_XA)
-                        chon.TEN_CAC_XA_DUOC_CHON += $"{_lstXa.FirstOrDefault(p => p.ID == i)?.ND ?? ""}; ";
+                    foreach (string id_xa in chon.THU_TU_CHON_XA)
+                        chon.TEN_CAC_XA_DUOC_CHON += $"{_lstXa.FirstOrDefault(p => p.ID == id_xa)?.ND ?? ""}; ";
 
                     chonDiaBanXaBindingSource.EndEdit();
                     bgrvChonXa.RefreshData();
@@ -126,10 +126,10 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             }
         }
 
-        private List<MA_DIA_BAN_XA> LayDanhSachXa(List<int> lst_id_xa)
+        private List<MA_DIA_BAN_XA> LayDanhSachXa(List<string> lst_id_xa)
         {
             var res = new List<MA_DIA_BAN_XA>();
-            foreach (int id in lst_id_xa)
+            foreach (string id in lst_id_xa)
                 res.Add(_lstXa.FirstOrDefault(p => p.ID == id));
             return res;
         }
