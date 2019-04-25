@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
     //Phục vụ chọn địa bàn xã nhanh hơn => cần khi xuất kế hoạch công tác
-    class ChonDiaBanXa
+    [Serializable]
+    public class ChonDiaBanXa
     {
         public ChonDiaBanXa()
         {

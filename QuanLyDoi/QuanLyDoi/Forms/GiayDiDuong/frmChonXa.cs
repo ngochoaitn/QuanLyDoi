@@ -15,6 +15,7 @@ using Aspose.Words;
 using System.Diagnostics;
 using Aspose.Words.Tables;
 using QuanLyDoi.Lib;
+using QuanLyDoi.Database.LocalData;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
@@ -218,6 +219,29 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 chon.NGAY_LOAI_BO = txtNgayLoai.Text;
             chonDiaBanXaBindingSource.EndEdit();
             bgrvChonXa.RefreshData();
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = "data.qld";
+            if(save.ShowDialog() == DialogResult.OK)
+            {
+                DatabaseManager data = new DatabaseManager(save.FileName);
+                data.ChonDiaBanXas = chonDiaBanXaBindingSource.List as BindingList<ChonDiaBanXa>;
+                data.SaveChange();
+            }
+        }
+
+        private void btnNap_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Tệp qld|*.qld";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                DatabaseManager data = new DatabaseManager(open.FileName);
+                chonDiaBanXaBindingSource.DataSource = data.ChonDiaBanXas;
+            }
         }
 
         private void bgrvChonXa_KeyUp(object sender, KeyEventArgs e)

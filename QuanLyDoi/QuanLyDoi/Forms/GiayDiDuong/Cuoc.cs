@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
     //Cuốc
+    [Serializable]
     public class Cuoc
     {
         public int TuNgay { get; set; }

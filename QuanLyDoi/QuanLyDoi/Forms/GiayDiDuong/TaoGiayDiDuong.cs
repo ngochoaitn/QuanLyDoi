@@ -2,6 +2,7 @@
 using QuanLyDoi.Lib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                     ThongKeDiaBanXa[xa].Add(n, new List<CAN_BO>());
             }
         }
+        MA_DIA_BAN_XA tempXa = new MA_DIA_BAN_XA();
 
         public void DienThongTin(GiayDiDuong giay, NhomNgay nhom_ngay)
         {
@@ -28,7 +30,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
             BoSo nhomBoSo = new BoSo(nhom_ngay, validate);
             //Chọn ngẫu nhiên 1 bộ số trong các bộ số đã tạo
             List<int> boSo = nhomBoSo.DanhSachKetQua.GetRandomElement();
-
+            Debug.WriteLine(string.Join(", ", boSo));
             int cuocHienTai = 0;
             for(int i = 0; i < boSo.Count; i++)
             {

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -69,7 +70,9 @@ namespace QuanLyDoi.Lib
         public static T GetRandomElement<T>(this List<T> list)
         {
             Random ran = new Random();
-            return list.ElementAt(ran.Next(0, list.Count));
+            int ranVal = ran.Next(0, list.Count);
+            Thread.Sleep(50);
+            return list.ElementAt(ranVal);
         }
 
         public static T GetRandomElement<T>(this List<T> list, int max_position)

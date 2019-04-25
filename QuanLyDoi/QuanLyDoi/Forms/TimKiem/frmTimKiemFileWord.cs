@@ -25,7 +25,7 @@ namespace QuanLyDoi.Forms.TimKiem
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void TimKiemThuMuc(DirectoryInfo dir)
+        private void TimKiemThuMuc(DirectoryInfo dir, List<string> words)
         {
             if (!dir.Exists)
                 return;
@@ -42,15 +42,41 @@ namespace QuanLyDoi.Forms.TimKiem
                         try
                         {
                             doc = new Document(file.FullName);
-                            if (doc.FindWord(txtTuKhoa.Text) || file.Name.ToLower().Contains(txtTuKhoa.Text))
+                            foreach (var w in words)
                             {
-                                lock (_lstResult)
+                                if (w.Contains("+"))
                                 {
-                                    _lstResult.Add(file);
-                                    fileInfoBindingSource.Add(file);
-                                };
+                                    var wspl = w.Split('+');
+                                    bool found = true;
+                                    foreach(var word in wspl)
+                                    {
+                                        if (!doc.FindWord(word) && !file.Name.ToLower().Contains(word))
+                                        {
+                                            found = false;
+                                            break;
+                                        }
+                                    }
+                                    if(found)
+                                    {
+                                        lock (_lstResult)
+                                        {
+                                            _lstResult.Add(file);
+                                            fileInfoBindingSource.Add(file);
+                                        };
+                                    }
+                                }
+                                else
+                                {
+                                    if (doc.FindWord(w) || file.Name.ToLower().Contains(w))
+                                    {
+                                        lock (_lstResult)
+                                        {
+                                            _lstResult.Add(file);
+                                            fileInfoBindingSource.Add(file);
+                                        };
+                                    }
+                                }
                             }
-                            
                         }
                         catch(Exception ex)
                         {
@@ -65,7 +91,7 @@ namespace QuanLyDoi.Forms.TimKiem
                 //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, d);
                 try
                 {
-                    TimKiemThuMuc(d);
+                    TimKiemThuMuc(d, words);
                 }
                 catch { }
         }
@@ -104,8 +130,9 @@ namespace QuanLyDoi.Forms.TimKiem
 
         private void findBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            var words = txtTuKhoa.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (var path in txtThuMuc.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
-                TimKiemThuMuc(new DirectoryInfo(path?.Trim()));
+                TimKiemThuMuc(new DirectoryInfo(path?.Trim()), words);
         }
 
         private void findBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

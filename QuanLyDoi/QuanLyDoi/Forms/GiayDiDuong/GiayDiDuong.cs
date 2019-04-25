@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
+    [Serializable]
     public class GiayDiDuong
     {
         public List<Cuoc> Cuocs { get; set; }
