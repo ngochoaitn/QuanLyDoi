@@ -23,7 +23,7 @@ namespace QuanLyDoi
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2013";  // <<< NEW LINE
-            Global.Main = new Forms.Main();
+            Global.Main = new Forms.FormMain();
             Application.Run(Global.Main);
         }
 

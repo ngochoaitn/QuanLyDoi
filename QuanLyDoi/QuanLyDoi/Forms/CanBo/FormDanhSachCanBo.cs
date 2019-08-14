@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using DevExpress.XtraEditors;
+using QuanLyDoi.Database;
+using QuanLyDoi.Lib;
+using System;
+using System.Data.Entity;
 using System.Drawing;
-using System.Text;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using QuanLyDoi.Lib;
-using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
-using QuanLyDoi.Database;
-using System.Data.Entity;
 
 namespace QuanLyDoi.Forms.CanBo
 {
-    public partial class DanhSachCanBo : XtraForm
+    public partial class FormDanhSachCanBo : XtraForm
     {
         QuanLyDoiModel _db;
         private CAN_BO Current { get { return cAN_BOBindingSource.Current as CAN_BO; } }
 
-        public DanhSachCanBo()
+        public FormDanhSachCanBo()
         {
             InitializeComponent();
             _db = new QuanLyDoiModel();

@@ -86,7 +86,7 @@ namespace QuanLyDoi.Lib
             gridView1.Appearance.BandPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             gridView1.Appearance.BandPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
-            gridView1.RowHeight = 24;
+            //gridView1.RowHeight = 24;
             gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             gridView1.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.Azure;
             gridView1.Appearance.FocusedCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
@@ -140,11 +140,11 @@ namespace QuanLyDoi.Lib
 
         static void gridView1_CalcRowHeight(object sender, DevExpress.XtraGrid.Views.Grid.RowHeightEventArgs e)
         {
-            GridView view = sender as GridView;
-            if (e.RowHandle >= 0 && e.RowHandle == view.FocusedRowHandle)
-                e.RowHeight = 26;
-            else
-                e.RowHeight = 24;
+            //GridView view = sender as GridView;
+            //if (e.RowHandle >= 0 && e.RowHandle == view.FocusedRowHandle)
+            //    e.RowHeight = 26;
+            //else
+            //    e.RowHeight = 24;
         }
         /// <summary>
         /// Tùy biến grid bởi Trungpos SD

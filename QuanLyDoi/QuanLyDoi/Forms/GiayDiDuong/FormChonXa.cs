@@ -19,7 +19,7 @@ using QuanLyDoi.Database.LocalData;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
-    public partial class frmChonXa : DevExpress.XtraEditors.XtraForm
+    public partial class FormChonXa : DevExpress.XtraEditors.XtraForm
     {
         QuanLyDoiModel _db;
         int _thang, _nam;
@@ -27,7 +27,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         List<MA_DIA_BAN_XA> _lstXa;
         TaoGiayDiDuong taoGiayDiDuong;
 
-        public frmChonXa(int thang, int nam, List<string> cac_xa_co_dau)
+        public FormChonXa(int thang, int nam, List<string> cac_xa_co_dau)
         {
             InitializeComponent();
 
@@ -97,7 +97,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         private async void btnXuatGiay_Click(object sender, EventArgs e)
         {
             await TaoDanhSachGiayMoi();
-            XuatGiay();
+            this.XuatGiay();
         }
 
         private async Task TaoDanhSachGiayMoi()
@@ -174,26 +174,36 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         {
             Document doc = new Document("Reports\\KeHoachMau.doc");
 
-            doc.MailMerge.Execute(new[] { "Ngay_Thang_Nam" }, new[] { $"Ngân Sơn, ngày {new DateTime(_nam, _thang, 1).AddMonths(1).AddDays(-1).Day} tháng {_thang} năm {_nam}" });
+            doc.MailMerge.Execute(new[] { "Ngay_Thang_Nam" }, new[] { $"Ngân Sơn, ngày 01 tháng {_thang} năm {_nam}" });
             doc.MailMerge.Execute(new[] { "Nam" }, new[] { _nam.ToString() });
             doc.MailMerge.Execute(new[] { "Thang" }, new[] { _thang.ToString() });
 
             Table bang = doc.GetChild(NodeType.Table, 1, true) as Table;
             
-            int hangHienTai = 0;
+            int hangHienTai = 1;
             bang.InsertRows(hangHienTai, hangHienTai, chonDiaBanXaBindingSource.Count - 1);
 
-            var  lstCanBo = await _db.CAN_BO.ToListAsync();
+            var  lstCanBo = await new QuanLyDoiModel().CAN_BO.ToListAsync();
             foreach(ChonDiaBanXa chon in chonDiaBanXaBindingSource)
             {
                 var hang = bang.Rows[hangHienTai];
-                string noiDung = "";
+
+                //Nhiệm vụ
+                bang.PutValue(hangHienTai, 2, lstCanBo.FirstOrDefault(p => p.IdCanBo == chon.ID_CAN_BO)?.NhiemVuGiayDiDuong?.Replace("\r\n", ControlChar.LineBreak));
+
+                //Nội dung đi đường
+                List<string> noiDung = new List<string>();
                 foreach (var cuoc in chon.GiayDiDuong.Cuocs)
-                    noiDung += $"- {cuoc?.Xa?.ND ?? "" }: từ ngày {NgayThang(cuoc.TuNgay)} đến ngày {NgayThangNam(cuoc.DenNgay)}{ControlChar.LineBreak}";
+                    noiDung.Add($"- {cuoc?.Xa?.ND ?? "" }: từ ngày {NgayThang(cuoc.TuNgay)} đến ngày {NgayThangNam(cuoc.DenNgay)}");
                 bang.PutValue(hangHienTai, 1, chon.GiayDiDuong.CanBo.HoVaTen);
-                bang.PutValue(hangHienTai, 3, noiDung);
+                bang.PutValue(hangHienTai, 3, string.Join(ControlChar.LineBreak, noiDung));
                 bang.Rows[hangHienTai].ChangeFont(1, bold: true);
                 bang.Rows[hangHienTai].ChangeFont(3, italic: true);
+
+                //Chỉnh font
+                bang.Rows[hangHienTai].ChangeFont(font_size:12);
+                bang.Rows[hangHienTai].Cells[0].ChangeFont(bold: true, font_size: 12);
+                bang.Rows[hangHienTai].Cells[1].ChangeFont(bold:true, font_size: 12);
                 hangHienTai++;
             }
 
@@ -242,6 +252,11 @@ namespace QuanLyDoi.Forms.GiayDiDuong
                 DatabaseManager data = new DatabaseManager(open.FileName);
                 chonDiaBanXaBindingSource.DataSource = data.ChonDiaBanXas;
             }
+        }
+
+        private void btnNhiemVuCanBo_Click(object sender, EventArgs e)
+        {
+            new CanBo.FormNhiemVuGiayDiDuong().ShowDialog();
         }
 
         private void bgrvChonXa_KeyUp(object sender, KeyEventArgs e)

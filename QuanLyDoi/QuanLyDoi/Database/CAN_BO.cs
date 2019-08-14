@@ -53,6 +53,8 @@ namespace QuanLyDoi.Database
 
         public int? IdDoi { get; set; }
 
+        public string NhiemVuGiayDiDuong { get; set; }
+
         public virtual MA_CAP_BAC MA_CAP_BAC { get; set; }
 
         public virtual MA_CHUC_VU MA_CHUC_VU { get; set; }
@@ -60,5 +62,8 @@ namespace QuanLyDoi.Database
         public virtual MA_DOI MA_DOI { get; set; }
 
         public virtual TEP_TIN TEP_TIN { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TRUC_TUAN_CAN_BO> TRUC_TUAN_CAN_BO { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyDoi.Forms.GiayDiDuong
 {
-    partial class frmChonXa
+    partial class FormChonXa
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChonXa));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChonXa));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnNap = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.txtNgayLoai = new DevExpress.XtraEditors.TextEdit();
             this.txtNam = new DevExpress.XtraEditors.TextEdit();
             this.txtThang = new DevExpress.XtraEditors.TextEdit();
@@ -64,10 +66,10 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnNap = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnNhiemVuCanBo = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayLoai.Properties)).BeginInit();
@@ -91,10 +93,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnNhiemVuCanBo);
             this.layoutControl1.Controls.Add(this.btnNap);
             this.layoutControl1.Controls.Add(this.btnLuu);
             this.layoutControl1.Controls.Add(this.txtNgayLoai);
@@ -110,6 +114,26 @@
             this.layoutControl1.Size = new System.Drawing.Size(865, 376);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnNap
+            // 
+            this.btnNap.Location = new System.Drawing.Point(400, 3);
+            this.btnNap.Name = "btnNap";
+            this.btnNap.Size = new System.Drawing.Size(76, 22);
+            this.btnNap.StyleController = this.layoutControl1;
+            this.btnNap.TabIndex = 10;
+            this.btnNap.Text = "Nạp";
+            this.btnNap.Click += new System.EventHandler(this.btnNap_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(320, 3);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(76, 22);
+            this.btnLuu.StyleController = this.layoutControl1;
+            this.btnLuu.TabIndex = 9;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // txtNgayLoai
             // 
@@ -350,7 +374,8 @@
             this.layoutControlItem5,
             this.emptySpaceItem2,
             this.layoutControlItem6,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.layoutControlGroup1.Size = new System.Drawing.Size(865, 376);
@@ -382,7 +407,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 332);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(762, 42);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(610, 42);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -420,16 +445,6 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(386, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // btnLuu
-            // 
-            this.btnLuu.Location = new System.Drawing.Point(320, 3);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(76, 22);
-            this.btnLuu.StyleController = this.layoutControl1;
-            this.btnLuu.TabIndex = 9;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.btnLuu;
@@ -439,16 +454,6 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
-            // btnNap
-            // 
-            this.btnNap.Location = new System.Drawing.Point(400, 3);
-            this.btnNap.Name = "btnNap";
-            this.btnNap.Size = new System.Drawing.Size(76, 22);
-            this.btnNap.StyleController = this.layoutControl1;
-            this.btnNap.TabIndex = 10;
-            this.btnNap.Text = "Nạp";
-            this.btnNap.Click += new System.EventHandler(this.btnNap_Click);
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.btnNap;
@@ -457,6 +462,31 @@
             this.layoutControlItem7.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
+            // 
+            // btnNhiemVuCanBo
+            // 
+            this.btnNhiemVuCanBo.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNhiemVuCanBo.Appearance.Options.UseFont = true;
+            this.btnNhiemVuCanBo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnNhiemVuCanBo.Location = new System.Drawing.Point(613, 335);
+            this.btnNhiemVuCanBo.Name = "btnNhiemVuCanBo";
+            this.btnNhiemVuCanBo.Size = new System.Drawing.Size(148, 38);
+            this.btnNhiemVuCanBo.StyleController = this.layoutControl1;
+            this.btnNhiemVuCanBo.TabIndex = 11;
+            this.btnNhiemVuCanBo.Text = "Nhiệm vụ cán bộ";
+            this.btnNhiemVuCanBo.Click += new System.EventHandler(this.btnNhiemVuCanBo_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnNhiemVuCanBo;
+            this.layoutControlItem8.Location = new System.Drawing.Point(610, 332);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(152, 42);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(152, 42);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(152, 42);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // frmChonXa
             // 
@@ -490,6 +520,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -534,5 +565,7 @@
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.SimpleButton btnNhiemVuCanBo;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }

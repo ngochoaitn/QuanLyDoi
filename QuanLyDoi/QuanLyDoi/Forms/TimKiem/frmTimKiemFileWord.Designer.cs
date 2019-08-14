@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTimKiemFileWord));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.lblTrangThai = new DevExpress.XtraEditors.LabelControl();
             this.btnChonThuMuc = new DevExpress.XtraEditors.SimpleButton();
@@ -224,8 +227,6 @@
             this.colFullName.Name = "colFullName";
             this.colFullName.OptionsColumn.AllowEdit = false;
             this.colFullName.OptionsColumn.ReadOnly = true;
-            this.colFullName.Visible = true;
-            this.colFullName.VisibleIndex = 2;
             // 
             // colExtension
             // 
@@ -242,7 +243,7 @@
             this.colCreationTime.Name = "colCreationTime";
             this.colCreationTime.OptionsColumn.AllowEdit = false;
             this.colCreationTime.Visible = true;
-            this.colCreationTime.VisibleIndex = 3;
+            this.colCreationTime.VisibleIndex = 2;
             // 
             // colCreationTimeUtc
             // 
@@ -258,7 +259,7 @@
             this.colLastAccessTime.Name = "colLastAccessTime";
             this.colLastAccessTime.OptionsColumn.AllowEdit = false;
             this.colLastAccessTime.Visible = true;
-            this.colLastAccessTime.VisibleIndex = 4;
+            this.colLastAccessTime.VisibleIndex = 3;
             // 
             // colLastAccessTimeUtc
             // 
@@ -274,7 +275,7 @@
             this.colLastWriteTime.Name = "colLastWriteTime";
             this.colLastWriteTime.OptionsColumn.AllowEdit = false;
             this.colLastWriteTime.Visible = true;
-            this.colLastWriteTime.VisibleIndex = 5;
+            this.colLastWriteTime.VisibleIndex = 4;
             // 
             // colLastWriteTimeUtc
             // 
@@ -288,11 +289,18 @@
             // 
             // txtTuKhoa
             // 
-            this.txtTuKhoa.EditValue = "văn nghệ, thể dục ";
+            this.txtTuKhoa.EditValue = "văn nghệ+thể dục";
             this.txtTuKhoa.Location = new System.Drawing.Point(56, 38);
             this.txtTuKhoa.Name = "txtTuKhoa";
             this.txtTuKhoa.Size = new System.Drawing.Size(631, 20);
             this.txtTuKhoa.StyleController = this.layoutControl1;
+            toolTipTitleItem1.Text = "Hướng dẫn";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Nhập các từ khóa cấn tìm\r\nTìm nhiều từ cùng nhau bằng cách dùng dấu +\r\nVí dụ: 6 t" +
+    "háng+NQ20 sẽ tìm các văn bản có từ 6 tháng và từ NQ20\r\n";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.txtTuKhoa.SuperTip = superToolTip1;
             this.txtTuKhoa.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -379,6 +387,7 @@
             this.Name = "frmTimKiemFileWord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tìm kiếm nội dung tệp văn bản";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTimKiemFileWord_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtThuMuc.Properties)).EndInit();

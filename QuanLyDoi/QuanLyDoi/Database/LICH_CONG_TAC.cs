@@ -6,19 +6,23 @@ namespace QuanLyDoi.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Serializable]
-    public partial class BAO_CAO_DINH_KY
+    public partial class LICH_CONG_TAC
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int IdBaoCaoDinhKy { get; set; }
+        public int IdLichCongTac { get; set; }
 
-        [StringLength(50)]
-        public string SoCongVanYeuCau { get; set; }
+        public DateTime? ThoiGian { get; set; }
 
-        [StringLength(50)]
-        public string DonViNhanBaoCao { get; set; }
+        public DateTime? DenNgay { get; set; }
 
+        [StringLength(255)]
+        public string DiaDiem { get; set; }
+
+        [StringLength(500)]
+        public string ThanhPhan { get; set; }
+
+        [StringLength(500)]
         public string NoiDung { get; set; }
     }
 }

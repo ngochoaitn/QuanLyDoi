@@ -6,22 +6,25 @@ namespace QuanLyDoi.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Serializable]
-    public partial class MA_CHUC_VU
+    public partial class TRUC_TUAN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MA_CHUC_VU()
+        public TRUC_TUAN()
         {
-            CAN_BO = new HashSet<CAN_BO>();
+            TRUC_TUAN_CAN_BO = new HashSet<TRUC_TUAN_CAN_BO>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public int IdTrucTuan { get; set; }
 
-        [StringLength(50)]
-        public string ND { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? TuNgay { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? DenNgay { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CAN_BO> CAN_BO { get; set; }
+        public virtual ICollection<TRUC_TUAN_CAN_BO> TRUC_TUAN_CAN_BO { get; set; }
     }
 }

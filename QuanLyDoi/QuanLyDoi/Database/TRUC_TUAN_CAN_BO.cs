@@ -7,20 +7,21 @@ namespace QuanLyDoi.Database
     using System.Data.Entity.Spatial;
 
     [Serializable]
-    public partial class BAO_CAO_DINH_KY_NGAY_BAO_CAO
+    public partial class TRUC_TUAN_CAN_BO
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public int IdTrucTuan_CanBo { get; set; }
 
-        public int? IdBaoCaoDinhKy { get; set; }
+        public int IdTrucTuan { get; set; }
 
-        public int Ngay { get; set; }
+        public int? IdCanBo { get; set; }
 
-        public int Thang { get; set; }
-
-        [StringLength(50)]
+        [StringLength(500)]
         public string GhiChu { get; set; }
 
-        public virtual BAO_CAO_DINH_KY BAO_CAO_DINH_KY { get; set; }
+        public virtual CAN_BO CAN_BO { get; set; }
+
+        public virtual TRUC_TUAN TRUC_TUAN { get; set; }
     }
 }

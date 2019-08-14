@@ -8,7 +8,8 @@ namespace QuanLyDoi.Database
     public partial class QuanLyDoiModel : DbContext
     {
         public QuanLyDoiModel()
-            : base("name=QuanLyDoiModel")
+            //: base("name=QuanLyDoiModel")
+            : base (Properties.Settings.Default.ChuoiKetNoiCSDL)
         {
         }
 
@@ -28,6 +29,9 @@ namespace QuanLyDoi.Database
         public virtual DbSet<NGUOI> NGUOI { get; set; }
         public virtual DbSet<TEP_TIN> TEP_TIN { get; set; }
         public virtual DbSet<XUAT_CANH_TRAI_PHEP> XUAT_CANH_TRAI_PHEP { get; set; }
+        public virtual DbSet<LICH_CONG_TAC> LICH_CONG_TAC { get; set; }
+        public virtual DbSet<TRUC_TUAN> TRUC_TUAN { get; set; }
+        public virtual DbSet<TRUC_TUAN_CAN_BO> TRUC_TUAN_CAN_BO { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -90,6 +94,11 @@ namespace QuanLyDoi.Database
                 .HasMany(e => e.CAN_BO)
                 .WithOptional(e => e.TEP_TIN)
                 .HasForeignKey(e => e.IdAnhDaiDien);
+
+            modelBuilder.Entity<TRUC_TUAN>()
+                .HasMany(e => e.TRUC_TUAN_CAN_BO)
+                .WithRequired(e => e.TRUC_TUAN)
+                .WillCascadeOnDelete(false);
         }
     }
 }

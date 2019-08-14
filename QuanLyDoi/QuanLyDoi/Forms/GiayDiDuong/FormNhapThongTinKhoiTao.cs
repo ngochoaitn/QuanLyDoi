@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace QuanLyDoi.Forms.GiayDiDuong
 {
-    public partial class frmNhapThongTinKhoiTao : DevExpress.XtraEditors.XtraForm
+    public partial class FormNhapThongTinKhoiTao : DevExpress.XtraEditors.XtraForm
     {
         QuanLyDoiModel _db;
         List<string> cacXaDuocChon = new List<string>();
 
-        public frmNhapThongTinKhoiTao()
+        public FormNhapThongTinKhoiTao()
         {
             InitializeComponent();
             _db = new QuanLyDoiModel();
@@ -55,7 +55,7 @@ namespace QuanLyDoi.Forms.GiayDiDuong
         {
             int thang = Convert.ToInt32(txtThang.Text);
             int nam = Convert.ToInt32(txtNam.Text);
-            Global.Main.ShowForm(new frmChonXa(thang, nam, cacXaDuocChon));
+            Global.Main.ShowForm(new FormChonXa(thang, nam, cacXaDuocChon));
             this.Close();
         }
     }

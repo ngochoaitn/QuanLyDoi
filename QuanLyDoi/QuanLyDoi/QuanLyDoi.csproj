@@ -63,11 +63,21 @@
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPocalipse.IFilter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPocalipse.IFilter.1.0.0\lib\EPocalipse.IFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -82,12 +92,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\BAO_CAO_DINH_KY.cs" />
     <Compile Include="Database\BAO_CAO_DINH_KY_NGAY_BAO_CAO.cs" />
     <Compile Include="Database\CAN_BO.cs" />
     <Compile Include="Database\CONG_VAN.cs" />
+    <Compile Include="Database\LICH_CONG_TAC.cs" />
     <Compile Include="Database\LocalData\DatabaseManager.cs" />
     <Compile Include="Database\GIAY_DI_DUONG.cs" />
     <Compile Include="Database\LOG.cs" />
@@ -99,19 +111,58 @@
     <Compile Include="Database\MA_DOI.cs" />
     <Compile Include="Database\MA_LOAI_CONG_VAN.cs" />
     <Compile Include="Database\NGUOI.cs" />
+    <Compile Include="Database\Partial.cs" />
     <Compile Include="Database\QuanLyDoiModel.cs" />
     <Compile Include="Database\TEP_TIN.cs" />
+    <Compile Include="Database\TRUC_TUAN.cs" />
+    <Compile Include="Database\TRUC_TUAN_CAN_BO.cs" />
     <Compile Include="Database\XUAT_CANH_TRAI_PHEP.cs" />
-    <Compile Include="Forms\CongVan\BaoCaoDinhKy.cs">
+    <Compile Include="Forms\CanBo\FormNhiemVuGiayDiDuong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CongVan\BaoCaoDinhKy.Designer.cs">
-      <DependentUpon>BaoCaoDinhKy.cs</DependentUpon>
+    <Compile Include="Forms\CanBo\FormNhiemVuGiayDiDuong.Designer.cs">
+      <DependentUpon>FormNhiemVuGiayDiDuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LichTrinh\FormLichTrinhCongTac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LichTrinh\FormLichTrinhCongTac.Designer.cs">
+      <DependentUpon>FormLichTrinhCongTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TrucTuan\FormDanhSachCanBoTrucTuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrucTuan\FormDanhSachCanBoTrucTuan.Designer.cs">
+      <DependentUpon>FormDanhSachCanBoTrucTuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TrucTuan\FormTrucTuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrucTuan\FormTrucTuan.Designer.cs">
+      <DependentUpon>FormTrucTuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CongVan\FormBaoCaoDinhKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CongVan\FormBaoCaoDinhKy.Designer.cs">
+      <DependentUpon>FormBaoCaoDinhKy.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GiayDiDuong\Cuoc.cs" />
     <Compile Include="Forms\GiayDiDuong\GiayDiDuong.cs" />
     <Compile Include="Forms\GiayDiDuong\NhomNgay.cs" />
     <Compile Include="Forms\GiayDiDuong\TaoGiayDiDuong.cs" />
+    <Compile Include="Forms\HeThong\FormCaiDat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HeThong\FormCaiDat.Designer.cs">
+      <DependentUpon>FormCaiDat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HeThong\FormIntro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HeThong\FormIntro.Designer.cs">
+      <DependentUpon>FormIntro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LamDep\WaitForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,11 +188,11 @@
       <DependentUpon>FormXuatCanhTraiPhep.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\CustomizeGridview.cs" />
-    <Compile Include="Forms\CanBo\DanhSachCanBo.cs">
+    <Compile Include="Forms\CanBo\FormDanhSachCanBo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CanBo\DanhSachCanBo.Designer.cs">
-      <DependentUpon>DanhSachCanBo.cs</DependentUpon>
+    <Compile Include="Forms\CanBo\FormDanhSachCanBo.Designer.cs">
+      <DependentUpon>FormDanhSachCanBo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CongVan\frmCongVanDen.cs">
       <SubType>Form</SubType>
@@ -150,18 +201,18 @@
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\SequenceId.cs" />
-    <Compile Include="Forms\GiayDiDuong\frmChonXa.cs">
+    <Compile Include="Forms\GiayDiDuong\FormChonXa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GiayDiDuong\frmChonXa.Designer.cs">
-      <DependentUpon>frmChonXa.cs</DependentUpon>
+    <Compile Include="Forms\GiayDiDuong\FormChonXa.Designer.cs">
+      <DependentUpon>FormChonXa.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GiayDiDuong\ChonDiaBanXa.cs" />
-    <Compile Include="Forms\GiayDiDuong\frmNhapThongTinKhoiTao.cs">
+    <Compile Include="Forms\GiayDiDuong\FormNhapThongTinKhoiTao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GiayDiDuong\frmNhapThongTinKhoiTao.Designer.cs">
-      <DependentUpon>frmNhapThongTinKhoiTao.cs</DependentUpon>
+    <Compile Include="Forms\GiayDiDuong\FormNhapThongTinKhoiTao.Designer.cs">
+      <DependentUpon>FormNhapThongTinKhoiTao.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TimKiem\frmTimKiemFileWord.cs">
       <SubType>Form</SubType>
@@ -169,15 +220,17 @@
     <Compile Include="Forms\TimKiem\frmTimKiemFileWord.Designer.cs">
       <DependentUpon>frmTimKiemFileWord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\Extention.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Forms\GiayDiDuong\BoSo.cs" />
+    <Compile Include="Lib\Log.cs" />
+    <Compile Include="Lib\MSWordBehavior.cs" />
     <Compile Include="Lib\ThaoTacNhanh.cs" />
     <Compile Include="Lib\ThongBao.cs" />
     <Compile Include="Program.cs" />
@@ -185,20 +238,38 @@
     <Compile Include="Support\DatabaseHelper.cs" />
     <Compile Include="Support\ReportExtentionMethod.cs" />
     <Compile Include="Support\SequenceId.cs" />
-    <EmbeddedResource Include="Forms\CanBo\DanhSachCanBo.resx">
-      <DependentUpon>DanhSachCanBo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CanBo\FormDanhSachCanBo.resx">
+      <DependentUpon>FormDanhSachCanBo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CongVan\BaoCaoDinhKy.resx">
-      <DependentUpon>BaoCaoDinhKy.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CanBo\FormNhiemVuGiayDiDuong.resx">
+      <DependentUpon>FormNhiemVuGiayDiDuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LichTrinh\FormLichTrinhCongTac.resx">
+      <DependentUpon>FormLichTrinhCongTac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrucTuan\FormDanhSachCanBoTrucTuan.resx">
+      <DependentUpon>FormDanhSachCanBoTrucTuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrucTuan\FormTrucTuan.resx">
+      <DependentUpon>FormTrucTuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CongVan\FormBaoCaoDinhKy.resx">
+      <DependentUpon>FormBaoCaoDinhKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CongVan\frmCongVanDen.resx">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GiayDiDuong\frmChonXa.resx">
-      <DependentUpon>frmChonXa.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GiayDiDuong\FormChonXa.resx">
+      <DependentUpon>FormChonXa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GiayDiDuong\frmNhapThongTinKhoiTao.resx">
-      <DependentUpon>frmNhapThongTinKhoiTao.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GiayDiDuong\FormNhapThongTinKhoiTao.resx">
+      <DependentUpon>FormNhapThongTinKhoiTao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HeThong\FormCaiDat.resx">
+      <DependentUpon>FormCaiDat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HeThong\FormIntro.resx">
+      <DependentUpon>FormIntro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LamDep\WaitForm1.resx">
       <DependentUpon>WaitForm1.cs</DependentUpon>
@@ -206,8 +277,8 @@
     <EmbeddedResource Include="Forms\TimKiem\frmTimKiemFileWord.resx">
       <DependentUpon>frmTimKiemFileWord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XuatCanhTraiPhep\FormDanhSachXuatCanhTraiPhep.resx">
       <DependentUpon>FormDanhSachXuatCanhTraiPhep.cs</DependentUpon>
@@ -236,6 +307,7 @@
     <None Include="Properties\DataSources\QuanLyDoi.Database.CAN_BO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.GIAY_DI_DUONG.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.LICH_CONG_TAC.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.LOG.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CAP_BAC.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_CHUC_VU.datasource" />
@@ -246,6 +318,8 @@
     <None Include="Properties\DataSources\QuanLyDoi.Database.MA_LOAI_CONG_VAN.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.NGUOI.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.TEP_TIN.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.TRUC_TUAN.datasource" />
+    <None Include="Properties\DataSources\QuanLyDoi.Database.TRUC_TUAN_CAN_BO.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Database.XUAT_CANH_TRAI_PHEP.datasource" />
     <None Include="Properties\DataSources\QuanLyDoi.Forms.GiayDiDuong.ChonDiaBanXa.datasource" />
     <None Include="Properties\Settings.settings">

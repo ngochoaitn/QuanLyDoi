@@ -1,6 +1,6 @@
 ﻿namespace QuanLyDoi.Forms.GiayDiDuong
 {
-    partial class frmNhapThongTinKhoiTao
+    partial class FormNhapThongTinKhoiTao
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapThongTinKhoiTao));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNhapThongTinKhoiTao));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnXacNhan = new DevExpress.XtraEditors.SimpleButton();
             this.txtNam = new DevExpress.XtraEditors.TextEdit();

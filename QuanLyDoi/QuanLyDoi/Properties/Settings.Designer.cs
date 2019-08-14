@@ -12,7 +12,7 @@ namespace QuanLyDoi.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,19 @@ namespace QuanLyDoi.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data source=.\\SQLExpress;initial catalog=dbQuanLyDoi;integrated security=True;Mul" +
+            "tipleActiveResultSets=True;App=EntityFramework")]
+        public string ChuoiKetNoiCSDL {
+            get {
+                return ((string)(this["ChuoiKetNoiCSDL"]));
+            }
+            set {
+                this["ChuoiKetNoiCSDL"] = value;
             }
         }
     }

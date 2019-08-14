@@ -51,7 +51,7 @@ namespace QuanLyDoi.Support
             run.Text = text != null ? text : "";
         }
 
-        public static void ChangeFont(this Row r, int column, string font_name="Time New Roman", float font_size = 14f, bool bold = false, bool italic = false, Underline underline = Underline.None)
+        public static void ChangeFont(this Row r, int column, string font_name="Times New Roman", float font_size = 14f, bool bold = false, bool italic = false, Underline underline = Underline.None)
         {
             if (r.Cells[column] != null
                 && r.Cells[column].FirstParagraph != null
@@ -66,7 +66,22 @@ namespace QuanLyDoi.Support
             }
         }
 
-        public static void ChangeFont(this Row r, string font_name = "Time New Roman", float font_size = 14f, bool bold=false, bool italic = false, Underline underline = Underline.None)
+        public static void ChangeFont(this Cell cell, string font_name = "Times New Roman", float font_size = 14f, bool bold = false, bool italic = false, Underline underline = Underline.None)
+        {
+            if (cell != null
+                && cell.FirstParagraph != null
+                && cell.FirstParagraph.Runs[0] != null
+                && cell.FirstParagraph.Runs[0].Font != null)
+            {
+                cell.FirstParagraph.Runs[0].Font.Name = font_name;
+                cell.FirstParagraph.Runs[0].Font.Size = font_size;
+                cell.FirstParagraph.Runs[0].Font.Bold = bold;
+                cell.FirstParagraph.Runs[0].Font.Italic = italic;
+                cell.FirstParagraph.Runs[0].Font.Underline = underline;
+            }
+        }
+
+        public static void ChangeFont(this Row r, string font_name = "Times New Roman", float font_size = 14f, bool bold=false, bool italic = false, Underline underline = Underline.None)
         {
             if (r == null)
                 return;

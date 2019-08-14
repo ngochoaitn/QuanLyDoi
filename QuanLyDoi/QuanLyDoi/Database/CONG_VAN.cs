@@ -6,6 +6,7 @@ namespace QuanLyDoi.Database
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Serializable]
     public partial class CONG_VAN
     {
         [Key]

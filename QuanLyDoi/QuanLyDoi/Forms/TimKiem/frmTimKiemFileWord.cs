@@ -13,16 +13,21 @@ using System.Threading;
 using QuanLyDoi.Lib;
 using Aspose.Words;
 using System.Diagnostics;
+using EPocalipse.IFilter;
 
 namespace QuanLyDoi.Forms.TimKiem
 {
     public partial class frmTimKiemFileWord : DevExpress.XtraEditors.XtraForm
     {
         List<FileInfo> _lstResult;
+        bool _cancel = false;
+        MSWordBehavior _msWordBehavior;
+
         public frmTimKiemFileWord()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            _msWordBehavior = new MSWordBehavior();
         }
 
         private void TimKiemThuMuc(DirectoryInfo dir, List<string> words)
@@ -34,14 +39,35 @@ namespace QuanLyDoi.Forms.TimKiem
             try
             {
                 Document doc = new Document();
+                
                 foreach (var file in dir.GetFiles())
                 {
+                    if (_cancel)
+                    {
+                        lblTrangThai.ChangeTextAsync("Đã hủy tìm kiếm", Color.Red);
+                        break;
+                    }
+
                     if (file.IsMSWordFile())
                     {
                         Debug.WriteLine($"Tìm File {file.FullName}");
                         try
                         {
-                            doc = new Document(file.FullName);
+                            string allTextLower = "";
+
+                            if (file.Extension.ToLower() == ".doc")
+                            {
+                                TextReader reader = new FilterReader(file.FullName);
+                                using (reader)
+                                {
+                                    allTextLower = reader.ReadToEnd().ToLower();
+                                }
+                            }
+                            else
+                            {
+                                allTextLower = _msWordBehavior.ReadAllText(file.FullName).ToLower();
+                            }
+                            
                             foreach (var w in words)
                             {
                                 if (w.Contains("+"))
@@ -50,7 +76,13 @@ namespace QuanLyDoi.Forms.TimKiem
                                     bool found = true;
                                     foreach(var word in wspl)
                                     {
-                                        if (!doc.FindWord(word) && !file.Name.ToLower().Contains(word))
+                                        //if (!doc.FindWord(word) && !file.Name.ToLower().Contains(word))
+                                        //{
+                                        //    found = false;
+                                        //    break;
+                                        //}
+
+                                        if(!allTextLower.Contains(word.ToLower()) && !file.Name.ToLower().Contains(word))
                                         {
                                             found = false;
                                             break;
@@ -67,7 +99,16 @@ namespace QuanLyDoi.Forms.TimKiem
                                 }
                                 else
                                 {
-                                    if (doc.FindWord(w) || file.Name.ToLower().Contains(w))
+                                    //if (doc.FindWord(w) || file.Name.ToLower().Contains(w))
+                                    //{
+                                    //    lock (_lstResult)
+                                    //    {
+                                    //        _lstResult.Add(file);
+                                    //        fileInfoBindingSource.Add(file);
+                                    //    };
+                                    //}
+
+                                    if (allTextLower.Contains(w.ToLower()) || file.Name.ToLower().Contains(w))
                                     {
                                         lock (_lstResult)
                                         {
@@ -81,6 +122,7 @@ namespace QuanLyDoi.Forms.TimKiem
                         catch(Exception ex)
                         {
                             Debug.WriteLine($"Lỗi: {file.FullName}\r\n{ex.Message}");
+                            Log.WriteLog($"Lỗi đọc tệp {file.FullName}\r\n{ex.Message}");
                         }
                     }
                 }
@@ -91,26 +133,37 @@ namespace QuanLyDoi.Forms.TimKiem
                 //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, d);
                 try
                 {
+                    if (_cancel)
+                    {
+                        lblTrangThai.ChangeTextAsync("Đã hủy tìm kiếm", Color.Red);
+                        break;
+                    }
                     TimKiemThuMuc(d, words);
                 }
                 catch { }
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private async void btnTimKiem_Click(object sender, EventArgs e)
         {
             //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
             //TimKiemThuMuc(new DirectoryInfo(txtThuMuc.Text));
             if (btnTimKiem.Text == "Tìm")
             {
+                _cancel = false;
                 btnTimKiem.Text = "Dừng";
                 _lstResult = new List<FileInfo>();
-                findBackgroundWorker.RunWorkerAsync();
+                //findBackgroundWorker.RunWorkerAsync();
+                await this.TimKiemTepAsync();
                 //ThreadPool.QueueUserWorkItem(TimKiemThuMuc, new DirectoryInfo(txtThuMuc.Text));
-                lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn thất", Color.Blue);
+                if (!_cancel)
+                    lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn thất", Color.Blue);
+                btnTimKiem.ChangeTextAsync("Tìm");
             }
             else
             {
-                findBackgroundWorker.CancelAsync();
+               // findBackgroundWorker.CancelAsync();
+                _cancel = true;
+                btnTimKiem.ChangeTextAsync("Tìm");
             }
         }
 
@@ -138,6 +191,24 @@ namespace QuanLyDoi.Forms.TimKiem
         private void findBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn tất", Color.Blue);
+        }
+
+        private Task TimKiemTepAsync()
+        {
+            return Task.Run(() =>
+            {
+                var words = txtTuKhoa.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                foreach (var path in txtThuMuc.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
+                    TimKiemThuMuc(new DirectoryInfo(path?.Trim()), words);
+                if (!_cancel)
+                    lblTrangThai.ChangeTextAsync("Tìm kiếm hoàn tất", Color.Blue);
+                btnTimKiem.ChangeTextAsync("Tìm");
+            });
+        }
+
+        private void frmTimKiemFileWord_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _msWordBehavior?.Dispose();
         }
     }
 }

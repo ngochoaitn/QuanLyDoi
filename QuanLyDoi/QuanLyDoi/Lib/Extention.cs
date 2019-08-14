@@ -1,4 +1,5 @@
 ﻿using Aspose.Words;
+using Aspose.Words.Replacing;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,7 +23,11 @@ namespace QuanLyDoi.Lib
 
         public static bool FindWord(this Document doc, string word)
         {
-            return doc.GetText().ToLower().Contains(word.ToLower());
+            //doc.Range.Replace("", "", false, false);
+            var found = doc.Range.Replace(word.ToLower(), "Tìm thấy", new FindReplaceOptions(FindReplaceDirection.Forward));
+            string allTextLower = doc.GetText().ToLower();
+            return found > 0;
+            //return allTextLower.Contains(word.ToLower());
         }
 
         public static void ChangeTextAsync(this DevExpress.XtraEditors.LabelControl lbl, string text, Color force_color)
@@ -39,6 +44,21 @@ namespace QuanLyDoi.Lib
             {
                 lbl.Text = text;
                 lbl.ForeColor = force_color;
+            }
+        }
+
+        public static void ChangeTextAsync(this DevExpress.XtraEditors.SimpleButton lbl, string text)
+        {
+            if (lbl.InvokeRequired)
+            {
+                lbl.BeginInvoke((Action)(() =>
+                {
+                    lbl.Text = text;
+                }));
+            }
+            else
+            {
+                lbl.Text = text;
             }
         }
 
